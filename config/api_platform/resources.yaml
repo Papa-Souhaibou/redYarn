@@ -1,0 +1,63 @@
+resources:
+  App\Entity\User:
+      itemOperations:
+        get_user:
+          method: 'GET'
+          path: '/admin/users/{id}'
+          requirements:
+            id: '\d+'
+          normalization_context:
+            groups: [ 'user_read' ]
+        set_user:
+          method: 'PUT'
+          path: '/admin/users/{id}'
+          requirements:
+            id: '\d+'
+          normalization_context:
+            groups: [ 'user_read' ]
+      collectionOperations:
+        get_users:
+          method: 'GET'
+          path: '/admin/users'
+          normalization_context:
+            groups: [ 'user_read' ]
+        add_user:
+          method: 'POST'
+          path: '/admin/users'
+          normalization_context:
+            groups: [ 'user_read' ]
+  App\Entity\Admin: ~
+  App\Entity\Apprenant: ~
+  App\Entity\Formateur: ~
+  App\Entity\Profil:
+    attributes:
+      normalization_context:
+        groups: ['profil_read']
+    properties:
+      users:
+        subresource: ~
+    collectionOperations:
+      get_profils:
+        method: 'GET'
+        path: '/admin/profils'
+      add_profil:
+        method: 'POST'
+        path: '/admin/profils'
+      get_users_with_this_profil:
+        method: 'GET'
+        path: '/admin/profils/{id}/users'
+        requirements:
+          id: '\d+'
+        normalization_context:
+          groups: ['users_with_this_profil']
+    itemOperations:
+      get_profil:
+        method: 'GET'
+        path: '/admin/profils/{id}'
+        requirements:
+          id: '\d+'
+      set_profil:
+        method: 'PUT'
+        path: '/admin/profils/{id}'
+        requirements:
+          id: '\d+'

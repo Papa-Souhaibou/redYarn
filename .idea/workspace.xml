@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,15 +23,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48f35e83-166c-41bf-8266-691deb249f8a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/serialization/Profil.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/serialization/User.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/validator/validation.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/redYarn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/redYarn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AdminFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AdminFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ApprenantFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ApprenantFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/FormateurFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/FormateurFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Apprenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Formateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Formateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,6 +150,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kMnqwjXTJQnBcwglsX24OdcH0U" />
@@ -147,6 +162,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -157,8 +173,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -173,7 +190,11 @@
       <workItem from="1605519682405" duration="638000" />
       <workItem from="1605524038508" duration="15000" />
       <workItem from="1605526578599" duration="20000" />
-      <workItem from="1605526601154" duration="16482000" />
+      <workItem from="1605526601154" duration="19656000" />
+      <workItem from="1605603467636" duration="2346000" />
+      <workItem from="1605605839457" duration="18085000" />
+      <workItem from="1605626088253" duration="2642000" />
+      <workItem from="1605686503485" duration="15310000" />
     </task>
     <servers />
   </component>
@@ -197,29 +218,37 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="555" y="200" width="800" height="678" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605540845980" />
-    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser" timestamp="1605541763344">
+    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser" timestamp="1605627900762">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605541763344" />
+    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605627900762" />
     <state x="693" y="288" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605541007356">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="693" y="288" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605541007356" />
-    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605551251296">
+    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605628478647">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605551251296" />
+    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605628478647" />
+    <state x="100" y="99" width="1720" height="880" key="DiffContextDialog" timestamp="1605610824645">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="100" y="99" width="1720" height="880" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605610824645" />
     <state x="721" y="297" key="FileChooserDialogImpl" timestamp="1605526597522">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="721" y="297" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605526597522" />
-    <state x="486" y="174" width="947" height="731" key="SettingsEditor" timestamp="1605519670656">
+    <state x="486" y="174" width="947" height="731" key="SettingsEditor" timestamp="1605610439757">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="486" y="174" width="947" height="731" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1605519670656" />
+    <state x="486" y="174" width="947" height="731" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1605610439757" />
     <state x="827" y="385" width="255" height="308" key="cloudConfig.SelfSettingsDialog" timestamp="1605519564764">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="827" y="385" width="255" height="308" key="cloudConfig.SelfSettingsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605519564764" />
+    <state x="623" y="238" width="672" height="678" key="search.everywhere.popup" timestamp="1605699451616">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605699451616" />
   </component>
 </project>

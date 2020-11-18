@@ -9,7 +9,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
  */
 class Profil
@@ -30,6 +29,11 @@ class Profil
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil")
      */
     private $users;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
 
     public function __construct()
     {
@@ -79,6 +83,18 @@ class Profil
                 $user->setProfil(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }

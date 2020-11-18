@@ -1,0 +1,8 @@
+App\Entity\Profil:
+  attributes:
+    id:
+      groups: [ 'profil_read','users_with_this_profil' ]
+    libelle:
+      groups: [ 'profil_read','users_with_this_profil' ]
+    users:
+      groups: [ 'users_with_this_profil' ]

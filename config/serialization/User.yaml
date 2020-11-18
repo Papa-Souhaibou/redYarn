@@ -1,0 +1,10 @@
+App\Entity\User:
+  attributes:
+    firstname:
+      groups: [ 'users_with_this_profil','user_read' ]
+    lastname:
+      groups: [ 'users_with_this_profil','user_read' ]
+    email:
+      groups: [ 'users_with_this_profil','user_read' ]
+    username:
+      groups: [ 'users_with_this_profil','user_read' ]

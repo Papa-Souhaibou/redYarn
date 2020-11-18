@@ -3,3 +3,24 @@
 #    controller: App\Controller\DefaultController::index
 api_login_check:
   path: /api/login_check
+
+get_profils:
+  path: /api/admin/profils
+  methods: [GET]
+  defaults:
+    _api_resource_class: Profil::class
+    _api_collection_operation_name: get_profils
+
+add_profil:
+  path: /api/admin/profils
+  methods: [POST]
+  defaults:
+    _api_resource_class: Profil::class
+    _api_collection_operation_name: add_profil
+
+admin_gets_users:
+  path: /api/admin/users
+  methods: [GET]
+  defaults:
+    _api_resource_class: Admin::class
+    _api_collection_operation_name: admin_gets_users

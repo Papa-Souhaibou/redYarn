@@ -1,0 +1,37 @@
+App\Entity\Profil:
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 2
+          minMessage: The min length is 2 characters
+
+App\Entity\User:
+  constraint:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+        fields: [ username ]
+  properties:
+    firstname:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 4
+          minMessage: The min length is 4 characters
+    lastname:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 4
+          minMessage: The min length is 4 characters
+    username:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 4
+          minMessage: The min length is 4 characters
+    email:
+      - NotBlank:
+          message: This field is required
+      - Email:
+          message: This email "{{ value }}" is'nt valid
