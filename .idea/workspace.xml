@@ -23,27 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48f35e83-166c-41bf-8266-691deb249f8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/serialization/Profil.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/serialization/User.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/validator/validation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/redYarn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/redYarn.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/serialization/ProfilSortie.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AdminFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AdminFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ApprenantFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ApprenantFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/FormateurFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/FormateurFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/api_platform/resources.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/api_platform/resources.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/validator/validation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/validator/validation.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Apprenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Formateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Formateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +179,10 @@
       <workItem from="1605603467636" duration="2346000" />
       <workItem from="1605605839457" duration="18085000" />
       <workItem from="1605626088253" duration="2642000" />
-      <workItem from="1605686503485" duration="15310000" />
+      <workItem from="1605686503485" duration="22337000" />
+      <workItem from="1605725570387" duration="6361000" />
+      <workItem from="1605773101597" duration="4655000" />
+      <workItem from="1605779532392" duration="1695000" />
     </task>
     <servers />
   </component>
