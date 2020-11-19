@@ -29,3 +29,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    Profil.isDeleted_filter:
+        parent: 'api_platform.doctrine.orm.boolean_filter'
+        arguments: [ { 'isDeleted':false }]
+        tags:  [ name:'api_platform.filter', id:'customer.boolean_filter' ]
+        autowire: false
+        autoconfigure: false
+        public: false

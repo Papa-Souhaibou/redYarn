@@ -35,3 +35,12 @@ App\Entity\User:
           message: This field is required
       - Email:
           message: This email "{{ value }}" is'nt valid
+
+App\Entity\ProfilSortie:
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 2
+          minMessage: The min length is 2 characters

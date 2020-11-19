@@ -35,21 +35,26 @@ resources:
         groups: ['profil_read']
     properties:
       users:
-        subresource: ~
+        subresource:
+          resourceClass: 'App\Entity\User'
+          collection: false
+    subresourceOperations:
+      collectionOperations:
+        attributes:
+          normalization_context:
+            groups: [ 'users_with_this_profil' ]
+        get_users_with_this_profil:
+          method: 'GET'
+
     collectionOperations:
       get_profils:
+        filters: [ 'Profil.isDeleted_filter' ]
         method: 'GET'
         path: '/admin/profils'
       add_profil:
         method: 'POST'
         path: '/admin/profils'
-      get_users_with_this_profil:
-        method: 'GET'
-        path: '/admin/profils/{id}/users'
-        requirements:
-          id: '\d+'
-        normalization_context:
-          groups: ['users_with_this_profil']
+
     itemOperations:
       get_profil:
         method: 'GET'
@@ -61,3 +66,30 @@ resources:
         path: '/admin/profils/{id}'
         requirements:
           id: '\d+'
+  App\Entity\ProfilSortie:
+      properties:
+        apprenants:
+          requirements:
+            id: '\d+'
+          subresource:
+            path: '/admin/profilsorties/{id}/apprenants'
+            resourceClass: 'App\Entity\Apprenant'
+            collection: true
+      collectionOperations:
+        get_profilSorties:
+          method: 'GET'
+          path: '/admin/profilsorties'
+        add_profilSortie:
+          method: 'POST'
+          path: '/admin/profilsorties'
+      itemOperations:
+        get_profilSortie:
+          method: 'GET'
+          path: '/admin/profilsorties/{id}'
+          requirements:
+            id: '\d+'
+        set_profilSortie:
+          method: 'PUT'
+          path: '/admin/profilsorties/{id}'
+          requirements:
+            id: '\d+'
