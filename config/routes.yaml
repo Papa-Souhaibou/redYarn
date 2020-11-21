@@ -24,3 +24,4 @@ admin_gets_users:
   defaults:
     _api_resource_class: Admin::class
     _api_collection_operation_name: admin_gets_users
+

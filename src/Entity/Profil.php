@@ -31,7 +31,7 @@ class Profil
     private $users;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean",options={ "default" : false})
      */
     private $isDeleted;
 

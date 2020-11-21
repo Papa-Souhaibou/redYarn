@@ -44,3 +44,5 @@ App\Entity\ProfilSortie:
       - Length:
           min: 2
           minMessage: The min length is 2 characters
+
+

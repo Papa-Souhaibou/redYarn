@@ -2,33 +2,95 @@ resources:
   App\Entity\User:
       itemOperations:
         get_user:
-          method: 'GET'
-          path: '/admin/users/{id}'
+          method: GET
+          path: /admin/users/{id}
           requirements:
-            id: '\d+'
+            id: \d+
           normalization_context:
             groups: [ 'user_read' ]
         set_user:
-          method: 'PUT'
-          path: '/admin/users/{id}'
+          method: PUT
+          path: /admin/users/{id}
           requirements:
-            id: '\d+'
+            id: \d+
           normalization_context:
             groups: [ 'user_read' ]
+          controller: App\Controller\UserController::setUser
+          deserialize: false
+        delete_user:
+          method: DELETE
+          path: /admin/users/{id}
+          requirements:
+            id: \d+
+          normalization_context:
+            groups: [ 'user_read' ]
+
       collectionOperations:
         get_users:
-          method: 'GET'
-          path: '/admin/users'
+          method: GET
+          path: /admin/users
           normalization_context:
             groups: [ 'user_read' ]
         add_user:
-          method: 'POST'
-          path: '/admin/users'
+          method: POST
+          path: /admin/users
           normalization_context:
             groups: [ 'user_read' ]
-  App\Entity\Admin: ~
-  App\Entity\Apprenant: ~
-  App\Entity\Formateur: ~
+          controller: App\Controller\UserController::addUser
+          deserialize: false
+
+  App\Entity\Admin:
+    attributes:
+      normalization_context:
+        groups: [ 'user_read' ]
+
+  App\Entity\Apprenant:
+    attributes:
+      normalization_context:
+        groups: [ 'user_read' ]
+    collectionOperations:
+      get_apprenants:
+        method: GET
+        path: /apprenants
+      add_apprenant:
+        method: POST
+        path: /apprenants
+    itemOperations:
+      get_apprenant:
+        method: GET
+        path: /apprenants/{id}
+        requirements:
+          id: \d+
+      set_apprenant:
+        method: PUT
+        path: /apprenants/{id}
+        requirements:
+          id: \d+
+
+
+  App\Entity\Formateur:
+    attributes:
+      normalization_context:
+        groups: [ 'user_read' ]
+      collectionOperations:
+        get_formateurs:
+          method: GET
+          path: /formateurs
+        add_formateur:
+          method: POST
+          path: /formateurs
+      itemOperations:
+        get_formateur:
+          method: GET
+          path: /formateurs/{id}
+          requirements:
+            id: \d+
+        set_formateur:
+          method: PUT
+          path: /formateurs/{id}
+          requirements:
+            id: \d+
+
   App\Entity\Profil:
     attributes:
       normalization_context:
@@ -36,7 +98,7 @@ resources:
     properties:
       users:
         subresource:
-          resourceClass: 'App\Entity\User'
+          resourceClass: App\Entity\User
           collection: false
     subresourceOperations:
       collectionOperations:
@@ -44,52 +106,81 @@ resources:
           normalization_context:
             groups: [ 'users_with_this_profil' ]
         get_users_with_this_profil:
-          method: 'GET'
+          method: GET
 
     collectionOperations:
       get_profils:
-        filters: [ 'Profil.isDeleted_filter' ]
-        method: 'GET'
-        path: '/admin/profils'
+        method: GET
+        path: /admin/profils
       add_profil:
-        method: 'POST'
-        path: '/admin/profils'
+        method: POST
+        path: /admin/profils
 
     itemOperations:
       get_profil:
-        method: 'GET'
-        path: '/admin/profils/{id}'
+        method: GET
+        path: /admin/profils/{id}
         requirements:
-          id: '\d+'
+          id: \d+
       set_profil:
-        method: 'PUT'
-        path: '/admin/profils/{id}'
+        method: PUT
+        path: /admin/profils/{id}
         requirements:
-          id: '\d+'
+          id: \d+
+      delete_profil:
+        method: DELETE
+        path: /admin/profils/{id}
+        requirements:
+          id: \d+
+
+
   App\Entity\ProfilSortie:
       properties:
         apprenants:
           requirements:
-            id: '\d+'
+            id: \d
           subresource:
-            path: '/admin/profilsorties/{id}/apprenants'
-            resourceClass: 'App\Entity\Apprenant'
+            path: /admin/profilsorties/{id}/apprenants
+            resourceClass: App\Entity\Apprenant
             collection: true
       collectionOperations:
         get_profilSorties:
-          method: 'GET'
-          path: '/admin/profilsorties'
+          method: GET
+          path: /admin/profilsorties
         add_profilSortie:
-          method: 'POST'
-          path: '/admin/profilsorties'
+          method: POST
+          path: /admin/profilsorties
       itemOperations:
         get_profilSortie:
-          method: 'GET'
-          path: '/admin/profilsorties/{id}'
+          method: GET
+          path: /admin/profilsorties/{id}
           requirements:
-            id: '\d+'
+            id: \d+
         set_profilSortie:
-          method: 'PUT'
-          path: '/admin/profilsorties/{id}'
+          method: PUT
+          path: /admin/profilsorties/{id}
           requirements:
-            id: '\d+'
+            id: \d+
+
+  App\Entity\GroupeCompetence:
+    collectionOperations:
+      get_grpecompetences:
+        method: GET
+        path: /admin/grpecompetences
+      add_grpecompetence:
+        method: POST
+        path: /admin/grpecompetences
+    itemOperations:
+      get_grpecompetence:
+        method: GET
+        path: /admin/grpecompetences/{id}
+        requirements:
+          id: \id+
+      set_grpecompetence:
+        method: PUT
+        path: /admin/grpecompetences/{id}
+        requirements:
+          id: \id+
+
+
+  App\Entity\Competence: ~
