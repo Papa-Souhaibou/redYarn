@@ -36,7 +36,7 @@ class ProfilDataPersister implements ContextAwareDataPersisterInterface
     {
         $users = $data->getUsers()->getValues();
         $data->setIsDeleted(true);
-        $users = array_map( function ($user){
+        array_map( function ($user){
             $user->setIsDeleted(true);
             return $user;
         },$users);

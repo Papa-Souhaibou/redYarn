@@ -4,41 +4,58 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\ProfilRepository;
-use App\Repository\UserRepository;
 use App\Service\CreateUserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserController extends AbstractController
 {
     private $avatarName = "avatar";
     private $entityNameSpace = "App\Entity\Admin";
-    public function addUser(Request $request, ProfilRepository $profilRepository, CreateUserInterface $createUser, SerializerInterface $serializer,
-                            ValidatorInterface $validator, UserPasswordEncoderInterface $encoder,
-                            EntityManagerInterface $manager)
+    private $manager,
+            $createUser;
+
+    public function __construct(CreateUserInterface $createUser,
+                                EntityManagerInterface $manager)
+    {
+        $this->manager = $manager;
+        $this->createUser = $createUser;
+    }
+
+    public function addUser(Request $request,ProfilRepository $profilRepository)
     {
         $profil = $profilRepository->findOneBy(["libelle" => "ADMIN"]);
-        $result = $createUser->createUserContent($request,$this->avatarName,$this->entityNameSpace,$serializer,$profil,$validator,$encoder);
+        $result = $this->createUser->createUserContent($request,$this->avatarName,$this->entityNameSpace,$profil);
         $status = Response::HTTP_BAD_REQUEST;
         if ($result instanceof User)
         {
-            $manager->persist($result);
-            $manager->flush();
-            fclose($createUser->getAvatarResource());
+            $this->manager->persist($result);
+            $this->manager->flush();
+            fclose($this->createUser->getAvatarResource());
             $status = Response::HTTP_CREATED;
         }
         return $this->json($result,$status);
     }
 
-    public function setUser($id,UserRepository $userRepository,Request $request)
+    public function setUser(User $user,Request $request)
     {
-        $user = $userRepository->findOneBy(["id" => $id]);
-        $profil  = $user->getProfil();
-        dd($request);
+        $value = $this->createUser->createUserContent($request,$this->avatarName,$this->entityNameSpace);
+        $status = Response::HTTP_BAD_REQUEST;
+        if ($value instanceof User)
+        {
+            $user->setFirstname($value->getFirstname())
+                ->setLastname($value->getLastname())
+                ->setPassword($value->getPassword())
+                ->setEmail($value->getEmail())
+                ->setAvatar($value->getAvatar())
+                ->setUsername($value->getUsername());
+            $this->manager->flush();
+            fclose($this->createUser->getAvatarResource());
+            $status = Response::HTTP_CREATED;
+            $value = $user;
+        }
+        return $this->json($value,$status);
     }
 }

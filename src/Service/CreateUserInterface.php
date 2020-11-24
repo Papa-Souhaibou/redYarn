@@ -2,9 +2,23 @@
 
 namespace App\Service;
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 class CreateUserInterface
 {
     private $avatarRessource = null;
+    private $encoder;
+    private $validator;
+    private $serializer;
+
+    public function __construct(UserPasswordEncoderInterface $encoder,ValidatorInterface $validator,SerializerInterface $serializer)
+    {
+        $this->encoder = $encoder;
+        $this->validator = $validator;
+        $this->serializer = $serializer;
+    }
 
     private function createUser($entity,$avatar,$encoder,$profil)
     {
@@ -21,17 +35,22 @@ class CreateUserInterface
         return $entity;
     }
 
-    public function createUserContent($request,$avatarName,$entityNameSpace,$serializer,$profil,$validator,$encoder)
+    public function createUserContent($request,$avatarName,$entityNameSpace,$profil=null)
     {
         $content = $request->request->all();
         $avatar = $request->files->get($avatarName);
-        $entity = $serializer->denormalize($content,$entityNameSpace);
-        $entity->setProfil($profil)
-            ->setIsDeleted(false);
-        $errors =  $validator->validate($entity);
+        $entity = $this->serializer->denormalize($content,$entityNameSpace);
+        if($profil == null)
+        {
+            $entity->setProfil($entity->getProfil());
+        }else{
+            $entity->setProfil($profil);
+        }
+        $entity->setIsDeleted(false);
+        $errors =  $this->validator->validate($entity);
         if (!count($errors))
         {
-            $entity = $this->createUser($entity,$avatar,$encoder,$profil);
+            $entity = $this->createUser($entity,$avatar,$this->encoder,$profil);
             return $entity;
         }
         return $errors;

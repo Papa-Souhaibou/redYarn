@@ -23,21 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48f35e83-166c-41bf-8266-691deb249f8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/ProfilDataPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/UserDataPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/CreateUserInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/serialization/GroupeCompetence.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/api_platform/resources.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/api_platform/resources.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/validator/validation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/validator/validation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApprenantController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FormateurController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfilController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataPersister/ProfilDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/ProfilDataPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/CreateUserInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CreateUserInterface.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +161,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -195,7 +187,8 @@
       <workItem from="1605807486852" duration="1165000" />
       <workItem from="1605858930541" duration="16778000" />
       <workItem from="1605880752251" duration="8879000" />
-      <workItem from="1605971063620" duration="7004000" />
+      <workItem from="1605971063620" duration="14428000" />
+      <workItem from="1606117897076" duration="19741000" />
     </task>
     <servers />
   </component>
@@ -219,14 +212,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="555" y="200" width="800" height="678" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605540845980" />
+    <state x="563" y="337" width="784" height="405" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605985108815">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="563" y="337" width="784" height="405" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605985108815" />
     <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser" timestamp="1605862103557">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605862103557" />
-    <state x="687" y="331" width="525" height="417" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605861095251">
+    <state x="687" y="331" width="525" height="417" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605983129009">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="687" y="331" width="525" height="417" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605861095251" />
+    <state x="687" y="331" width="525" height="417" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605983129009" />
     <state x="476" y="0" width="948" height="1080" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605973495248">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -235,10 +232,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="693" y="288" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605541007356" />
-    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605628478647">
+    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605982246871">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605628478647" />
+    <state x="693" y="297" width="524" height="485" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605982246871" />
     <state x="100" y="99" width="1720" height="880" key="DiffContextDialog" timestamp="1605610824645">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -247,22 +244,42 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="721" y="297" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605526597522" />
-    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog" timestamp="1605971585698">
+    <state width="1292" height="277" key="GridCell.Tab.0.bottom" timestamp="1606142856357">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605971585698" />
-    <state x="486" y="174" width="947" height="731" key="SettingsEditor" timestamp="1605610439757">
+    <state width="1292" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856357" />
+    <state width="1292" height="277" key="GridCell.Tab.0.center" timestamp="1606142856356">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="486" y="174" width="947" height="731" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1605610439757" />
+    <state width="1292" height="277" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856356" />
+    <state width="1292" height="277" key="GridCell.Tab.0.left" timestamp="1606142856356">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1292" height="277" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856356" />
+    <state width="1292" height="277" key="GridCell.Tab.0.right" timestamp="1606142856357">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1292" height="277" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856357" />
+    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog" timestamp="1605983130948">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605983130948" />
+    <state x="486" y="174" width="947" height="731" key="SettingsEditor" timestamp="1606142832107">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="486" y="174" width="947" height="731" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1606142832107" />
     <state x="827" y="385" width="255" height="308" key="cloudConfig.SelfSettingsDialog" timestamp="1605519564764">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="827" y="385" width="255" height="308" key="cloudConfig.SelfSettingsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605519564764" />
-    <state x="624" y="246" key="run.anything.popup" timestamp="1605791902019">
+    <state x="682" y="320" width="546" height="435" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1606138221747">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="624" y="246" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605791902019" />
+    <state x="682" y="320" width="546" height="435" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606138221747" />
+    <state x="624" y="246" key="run.anything.popup" timestamp="1606142699226">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="624" y="246" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606142699226" />
     <state x="623" y="238" width="672" height="678" key="search.everywhere.popup" timestamp="1605887287369">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

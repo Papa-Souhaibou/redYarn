@@ -55,6 +55,8 @@ resources:
       add_apprenant:
         method: POST
         path: /apprenants
+        controller: App\Controller\ApprenantController::addStudent
+        deserialize: false
     itemOperations:
       get_apprenant:
         method: GET
@@ -66,6 +68,7 @@ resources:
         path: /apprenants/{id}
         requirements:
           id: \d+
+        controller: App\Controller\UserController::setUser
 
 
   App\Entity\Formateur:
@@ -90,6 +93,7 @@ resources:
           path: /formateurs/{id}
           requirements:
             id: \d+
+          controller: App\Controller\UserController::setUser
 
   App\Entity\Profil:
     attributes:
@@ -163,6 +167,9 @@ resources:
             id: \d+
 
   App\Entity\GroupeCompetence:
+    attributes:
+      normalization_context:
+        groups: [ 'grpecompetence_read' ]
     collectionOperations:
       get_grpecompetences:
         method: GET
@@ -170,6 +177,8 @@ resources:
       add_grpecompetence:
         method: POST
         path: /admin/grpecompetences
+        controller: App\Controller\GroupeCompetenceController::addGrpeCompetence
+        deserialize: false
     itemOperations:
       get_grpecompetence:
         method: GET
