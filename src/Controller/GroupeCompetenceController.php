@@ -21,31 +21,31 @@ class GroupeCompetenceController extends AbstractController
     public function addGrpeCompetence(Request $request,SerializerInterface $serializer,ValidatorInterface $validator)
     {
         $requestContent = $request->getContent();
-        $grpeCompetenceArray = $serializer->decode($requestContent,"json");
-        $competencesArray = !empty($grpeCompetenceArray["competences"]) ? $grpeCompetenceArray["competences"]:[];
-        $grpeCompetenceArray["competences"] = [];
-        $grpeCompetence = $serializer->denormalize($grpeCompetenceArray,"App\Entity\GroupeCompetence");
-        $competences = $serializer->denormalize($competencesArray,"App\Entity\Competence[]");
-        $grpeEerrors = $validator->validate($grpeCompetence);
-        $competenceErrors = $validator->validate($competences);
-        if(empty($grpeEerrors) && empty($competenceErrors))
+        $grpeCompetenceTab = $serializer->decode($requestContent,"json");
+        $competenceTab = !empty($grpeCompetenceTab["competences"]) ? $grpeCompetenceTab["competences"] : null;
+        unset($grpeCompetenceTab["competences"]);
+        $grpeCompetence = $serializer->denormalize($grpeCompetenceTab,"App\Entity\GroupeCompetence");
+        $grpeCompetenceErrors = $validator->validate($grpeCompetence);
+        if(isset($competenceTab))
         {
-            $grpeCompetence = $this->addCompetenceToGroupe($competences,$this->manager,$grpeCompetence);
-            $this->manager->persist($grpeCompetence);
-            dd($grpeCompetence);
-            $this->manager->flush();
-            return $this->json($grpeCompetence,Response::HTTP_CREATED);
+            $competences = $serializer->denormalize($competenceTab,"App\Entity\Competence[]");
+            $competenceErrors = $validator->validate($competences);
+            if(empty($grpeCompetenceErrors) && empty($competenceErrors))
+            {
+                $grpeCompetence = $this->addCompetenceToGroup($grpeCompetence,$competences);
+                $this->manager->persist($grpeCompetence);
+                $this->manager->flush();
+                return $this->json($grpeCompetence,Response::HTTP_CREATED);
+            }
         }
     }
 
-    private function addCompetenceToGroupe($competences,$manager,$grpeCompetence)
+    private function addCompetenceToGroup($groupeCompetence,$competences)
     {
         foreach ($competences as $competence)
         {
-            $competence->addGroupeCompetence($grpeCompetence);
-            $this->manager->persist($competence);
-            $grpeCompetence->addCompetence($competence);
+            $groupeCompetence->addCompetence($competence);
         }
-        return $grpeCompetence;
+        return $groupeCompetence;
     }
 }

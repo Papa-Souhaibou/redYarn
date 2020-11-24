@@ -1,0 +1,8 @@
+App\Entity\Competence:
+  attributes:
+    id:
+      groups: [ 'competence_read','grpecompetence_read' ]
+    libelle:
+      groups: [ 'competence_read','grpecompetence_read' ]
+    groupecompetences:
+      groups: [ 'competence_read' ]

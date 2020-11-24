@@ -30,7 +30,7 @@ class GroupeCompetence
     private $descriptif;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Competence::class, mappedBy="groupeCompetences")
+     * @ORM\ManyToMany(targetEntity=Competence::class, mappedBy="groupeCompetences",cascade={"persist"})
      */
     private $competences;
 

@@ -23,13 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48f35e83-166c-41bf-8266-691deb249f8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/serialization/GroupeCompetence.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/serialization/Competence.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/api_platform/resources.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/api_platform/resources.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/validator/validation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/validator/validation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataPersister/ProfilDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/ProfilDataPersister.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/CreateUserInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CreateUserInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/serialization/GroupeCompetence.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/serialization/GroupeCompetence.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GroupeCompetence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeCompetence.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +187,8 @@
       <workItem from="1605858930541" duration="16778000" />
       <workItem from="1605880752251" duration="8879000" />
       <workItem from="1605971063620" duration="14428000" />
-      <workItem from="1606117897076" duration="19741000" />
+      <workItem from="1606117897076" duration="24414000" />
+      <workItem from="1606209825019" duration="11469000" />
     </task>
     <servers />
   </component>
@@ -244,22 +244,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="721" y="297" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605526597522" />
-    <state width="1292" height="277" key="GridCell.Tab.0.bottom" timestamp="1606142856357">
+    <state width="1292" height="277" key="GridCell.Tab.0.bottom" timestamp="1606215650833">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1292" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856357" />
-    <state width="1292" height="277" key="GridCell.Tab.0.center" timestamp="1606142856356">
+    <state width="1292" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606215650833" />
+    <state width="1292" height="277" key="GridCell.Tab.0.center" timestamp="1606215650833">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1292" height="277" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856356" />
-    <state width="1292" height="277" key="GridCell.Tab.0.left" timestamp="1606142856356">
+    <state width="1292" height="277" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606215650833" />
+    <state width="1292" height="277" key="GridCell.Tab.0.left" timestamp="1606215650832">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1292" height="277" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856356" />
-    <state width="1292" height="277" key="GridCell.Tab.0.right" timestamp="1606142856357">
+    <state width="1292" height="277" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606215650832" />
+    <state width="1292" height="277" key="GridCell.Tab.0.right" timestamp="1606215650833">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1292" height="277" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606142856357" />
+    <state width="1292" height="277" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606215650833" />
     <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog" timestamp="1605983130948">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -276,13 +276,13 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="682" y="320" width="546" height="435" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606138221747" />
-    <state x="624" y="246" key="run.anything.popup" timestamp="1606142699226">
+    <state x="624" y="246" key="run.anything.popup" timestamp="1606208304504">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="624" y="246" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606142699226" />
-    <state x="623" y="238" width="672" height="678" key="search.everywhere.popup" timestamp="1605887287369">
+    <state x="624" y="246" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606208304504" />
+    <state x="623" y="238" width="672" height="678" key="search.everywhere.popup" timestamp="1606216202144">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605887287369" />
+    <state x="623" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606216202144" />
   </component>
 </project>

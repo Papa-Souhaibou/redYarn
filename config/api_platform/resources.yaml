@@ -170,8 +170,29 @@ resources:
     attributes:
       normalization_context:
         groups: [ 'grpecompetence_read' ]
+    properties:
+      competences:
+        subresource:
+          resourceClass: App\Entity\Competence
+          collection: false
+    itemOperations:
+      get_grpecompetence:
+        method: GET
+        path: /admin/grpecompetences/{id}
+        requirements:
+          id: \d+
+      set_grpecompetence:
+        method: PUT
+        path: /admin/grpecompeteces/{id}
+        requirements:
+          id: \d+
+      delete_grpecompetence:
+        method: DELETE
+        path: /admin/grpecompetences/{id}
+        requirements:
+          id: \d+
     collectionOperations:
-      get_grpecompetences:
+      get_grpecompetence:
         method: GET
         path: /admin/grpecompetences
       add_grpecompetence:
@@ -179,17 +200,29 @@ resources:
         path: /admin/grpecompetences
         controller: App\Controller\GroupeCompetenceController::addGrpeCompetence
         deserialize: false
-    itemOperations:
-      get_grpecompetence:
+
+  App\Entity\Competence:
+    attributes:
+      normalization_context:
+        groups: ['competence_read']
+      #security: is_granted('ROLE_ADMIN')
+      #security_message: Acces denied
+
+    collectionOperations:
+      get_competences:
         method: GET
-        path: /admin/grpecompetences/{id}
+        path: /admin/competences
+      add_competence:
+        method: POST
+        path: /admin/competences
+    itemOperations:
+      get_competence:
+        method: GET
+        path: /admin/competences/{id}
         requirements:
-          id: \id+
-      set_grpecompetence:
+          id: \d+
+      set_competence:
         method: PUT
-        path: /admin/grpecompetences/{id}
+        path: /admin/competences/{id}
         requirements:
-          id: \id+
-
-
-  App\Entity\Competence: ~
+          id: \d+
