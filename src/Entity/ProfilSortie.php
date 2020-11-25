@@ -29,9 +29,15 @@ class ProfilSortie
      */
     private $apprenants;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
+
     public function __construct()
     {
         $this->apprenants = new ArrayCollection();
+        $this->isDeleted = false;
     }
 
     public function getId(): ?int
@@ -77,6 +83,18 @@ class ProfilSortie
                 $apprenant->setProfilSortie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }

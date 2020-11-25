@@ -1,10 +1,10 @@
 App\Entity\GroupeCompetence:
   attributes:
     id:
-      groups: [ 'grpecompetence_read','competence_read' ]
+      groups: [ 'grpecompetence_read','competence_read','referentiel_read' ]
     libelle:
-      groups: [ 'grpecompetence_read','competence_read' ]
+      groups: [ 'grpecompetence_read','competence_read','referentiel_read' ]
     descriptif:
-      groups: [ 'grpecompetence_read','competence_read' ]
+      groups: [ 'grpecompetence_read','competence_read','referentiel_read' ]
     competences:
       groups: [ 'grpecompetence_read' ]

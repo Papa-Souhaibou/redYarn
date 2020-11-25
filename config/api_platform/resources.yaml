@@ -1,39 +1,35 @@
 resources:
   App\Entity\User:
+      attributes:
+        route_prefix: /admin
+        normalization_context:
+          groups: [ 'user_read' ]
       itemOperations:
         get_user:
           method: GET
-          path: /admin/users/{id}
+          path: /users/{id}
           requirements:
             id: \d+
-          normalization_context:
-            groups: [ 'user_read' ]
         set_user:
           method: PUT
-          path: /admin/users/{id}
+          path: /users/{id}
           requirements:
             id: \d+
-          normalization_context:
-            groups: [ 'user_read' ]
           controller: App\Controller\UserController::setUser
           deserialize: false
         delete_user:
           method: DELETE
-          path: /admin/users/{id}
+          path: /users/{id}
           requirements:
             id: \d+
-          normalization_context:
-            groups: [ 'user_read' ]
 
       collectionOperations:
         get_users:
           method: GET
-          path: /admin/users
-          normalization_context:
-            groups: [ 'user_read' ]
+          path: /users
         add_user:
           method: POST
-          path: /admin/users
+          path: /users
           normalization_context:
             groups: [ 'user_read' ]
           controller: App\Controller\UserController::addUser
@@ -70,7 +66,6 @@ resources:
           id: \d+
         controller: App\Controller\UserController::setUser
 
-
   App\Entity\Formateur:
     attributes:
       normalization_context:
@@ -99,6 +94,9 @@ resources:
     attributes:
       normalization_context:
         groups: ['profil_read']
+      route_prefix: /admin
+      security: is_granted('ROLE_ADMIN')
+      security_message: Only admins have access to this resource.
     properties:
       users:
         subresource:
@@ -115,54 +113,55 @@ resources:
     collectionOperations:
       get_profils:
         method: GET
-        path: /admin/profils
+        path: /profils
       add_profil:
         method: POST
-        path: /admin/profils
+        path: /profils
 
     itemOperations:
       get_profil:
         method: GET
-        path: /admin/profils/{id}
+        path: /profils/{id}
         requirements:
           id: \d+
       set_profil:
         method: PUT
-        path: /admin/profils/{id}
+        path: /profils/{id}
         requirements:
           id: \d+
       delete_profil:
         method: DELETE
-        path: /admin/profils/{id}
+        path: /profils/{id}
         requirements:
           id: \d+
 
-
   App\Entity\ProfilSortie:
+      attributes:
+        route_prefix: /admin
       properties:
         apprenants:
           requirements:
             id: \d
           subresource:
-            path: /admin/profilsorties/{id}/apprenants
+            path: /profilsorties/{id}/apprenants
             resourceClass: App\Entity\Apprenant
             collection: true
       collectionOperations:
         get_profilSorties:
           method: GET
-          path: /admin/profilsorties
+          path: /profilsorties
         add_profilSortie:
           method: POST
-          path: /admin/profilsorties
+          path: /profilsorties
       itemOperations:
         get_profilSortie:
           method: GET
-          path: /admin/profilsorties/{id}
+          path: /profilsorties/{id}
           requirements:
             id: \d+
         set_profilSortie:
           method: PUT
-          path: /admin/profilsorties/{id}
+          path: /profilsorties/{id}
           requirements:
             id: \d+
 
@@ -170,6 +169,7 @@ resources:
     attributes:
       normalization_context:
         groups: [ 'grpecompetence_read' ]
+      route_prefix: /admin
     properties:
       competences:
         subresource:
@@ -178,26 +178,26 @@ resources:
     itemOperations:
       get_grpecompetence:
         method: GET
-        path: /admin/grpecompetences/{id}
+        path: /grpecompetences/{id}
         requirements:
           id: \d+
       set_grpecompetence:
         method: PUT
-        path: /admin/grpecompeteces/{id}
+        path: /grpecompeteces/{id}
         requirements:
           id: \d+
       delete_grpecompetence:
         method: DELETE
-        path: /admin/grpecompetences/{id}
+        path: /grpecompetences/{id}
         requirements:
           id: \d+
     collectionOperations:
       get_grpecompetence:
         method: GET
-        path: /admin/grpecompetences
+        path: /grpecompetences
       add_grpecompetence:
         method: POST
-        path: /admin/grpecompetences
+        path: /grpecompetences
         controller: App\Controller\GroupeCompetenceController::addGrpeCompetence
         deserialize: false
 
@@ -205,24 +205,63 @@ resources:
     attributes:
       normalization_context:
         groups: ['competence_read']
+      route_prefix: /admin
       #security: is_granted('ROLE_ADMIN')
       #security_message: Acces denied
 
     collectionOperations:
       get_competences:
         method: GET
-        path: /admin/competences
+        path: /competences
       add_competence:
         method: POST
-        path: /admin/competences
+        path: /competences
     itemOperations:
       get_competence:
         method: GET
-        path: /admin/competences/{id}
+        path: /competences/{id}
         requirements:
           id: \d+
       set_competence:
         method: PUT
-        path: /admin/competences/{id}
+        path: /competences/{id}
+        requirements:
+          id: \d+
+
+  App\Entity\Referentiel:
+    attributes:
+      normalization_context:
+        groups: ['referentiel_read']
+      route_prefix: /admin
+      security: is_granted('ROLE_ADMIN')
+      security_message: Access Denied
+    properties:
+      groupeCompetences:
+        subresource:
+          resourceClass: App\Entity\GroupeCompetence
+          collection: false
+    collectionOperations:
+      get_referentiels:
+        method: GET
+        path: /referentiels
+      add_referentiel:
+        method: POST
+        path: /referentiels
+    itemOperations:
+      get_referentiel:
+        method: GET
+        path: /referentiels/{id}
+        requirements:
+          id: \d+
+      get_grpcompetence_in_referentiel:
+        method: GET
+      set_referentiel:
+        method: PUT
+        path: /referentiels/{id}
+        requirements:
+          id: \d+
+      delete_referentiel:
+        method: DELETE
+        path: /referentiels/{id}
         requirements:
           id: \d+

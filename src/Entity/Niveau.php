@@ -37,6 +37,16 @@ class Niveau
      */
     private $competence;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
+
+    public function __construct()
+    {
+        $this->isDeleted = false;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +96,18 @@ class Niveau
     public function setCompetence(?Competence $competence): self
     {
         $this->competence = $competence;
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }

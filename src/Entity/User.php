@@ -37,12 +37,12 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true))
      */
     private $firstname;
 
@@ -58,7 +58,7 @@ class User implements UserInterface
     private $profil;
 
     /**
-     * @ORM\Column(type="boolean", options={ "default" : false})
+     * @ORM\Column(type="boolean")
      */
     private $isDeleted;
 

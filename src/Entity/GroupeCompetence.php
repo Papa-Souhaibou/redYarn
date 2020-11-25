@@ -34,9 +34,21 @@ class GroupeCompetence
      */
     private $competences;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Referentiel::class, inversedBy="groupeCompetences")
+     */
+    private $referentiels;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
+
     public function __construct()
     {
         $this->competences = new ArrayCollection();
+        $this->referentiels = new ArrayCollection();
+        $this->isDeleted = false;
     }
 
     public function getId(): ?int
@@ -91,6 +103,42 @@ class GroupeCompetence
         if ($this->competences->removeElement($competence)) {
             $competence->removeGroupeCompetence($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Referentiel[]
+     */
+    public function getReferentiels(): Collection
+    {
+        return $this->referentiels;
+    }
+
+    public function addReferentiel(Referentiel $referentiel): self
+    {
+        if (!$this->referentiels->contains($referentiel)) {
+            $this->referentiels[] = $referentiel;
+        }
+
+        return $this;
+    }
+
+    public function removeReferentiel(Referentiel $referentiel): self
+    {
+        $this->referentiels->removeElement($referentiel);
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }

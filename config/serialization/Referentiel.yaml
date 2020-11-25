@@ -1,0 +1,16 @@
+App\Entity\Referentiel:
+  attributes:
+    id:
+      groups: ['referentiel_read']
+    libelle:
+      groups: ['referentiel_read']
+    presentation:
+      groups: ['referentiel_read']
+    programme:
+      groups: ['referentiel_read']
+    critereAdmission:
+      groups: ['referentiel_read']
+    critereEvaluation:
+      groups: ['referentiel_read']
+    groupeCompetences:
+      groups: ['referentiel_read']

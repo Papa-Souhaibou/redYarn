@@ -34,10 +34,16 @@ class Competence
      */
     private $niveaux;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
+
     public function __construct()
     {
         $this->groupeCompetences = new ArrayCollection();
         $this->niveaux = new ArrayCollection();
+        $this->isDeleted = false;
     }
 
     public function getId(): ?int
@@ -91,7 +97,7 @@ class Competence
 
     public function addNiveau(Niveau $niveau): self
     {
-        if (!$this->niveaux->contains($niveau)) {
+        if (!$this->niveaux->contains($niveau) && $this->niveaux->count() <= 3) {
             $this->niveaux[] = $niveau;
             $niveau->setCompetence($this);
         }
@@ -107,6 +113,18 @@ class Competence
                 $niveau->setCompetence(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }
