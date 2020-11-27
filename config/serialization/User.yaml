@@ -1,10 +1,14 @@
 App\Entity\User:
   attributes:
     firstname:
-      groups: [ 'users_with_this_profil','user_read' ]
+      groups: [ 'users_with_this_profil','user_read','promo_read' ]
     lastname:
-      groups: [ 'users_with_this_profil','user_read' ]
+      groups: [ 'users_with_this_profil','user_read','promo_read' ]
     email:
-      groups: [ 'users_with_this_profil','user_read' ]
+      groups: [ 'users_with_this_profil','user_read','promo_read' ]
     username:
-      groups: [ 'users_with_this_profil','user_read' ]
+      groups: [ 'users_with_this_profil','user_read','promo_read' ]
+    isDeleted:
+      groups: [ 'users_with_this_profil','user_read','promo_read' ]
+    avatar:
+      groups: [ 'users_with_this_profil','user_read','promo_read' ]

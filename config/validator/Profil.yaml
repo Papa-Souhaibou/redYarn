@@ -1,0 +1,10 @@
+App\Entity\Profil:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: libelle
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 2
+          minMessage: The min length is 2 characters

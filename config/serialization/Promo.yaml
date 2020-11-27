@@ -1,0 +1,26 @@
+App\Entity\Promo:
+  attributes:
+    id:
+      groups: [ 'promo_read' ]
+    language:
+      groups: [ 'promo_read' ]
+    title:
+      groups: [ 'promo_read' ]
+    description:
+      groups: [ 'promo_read' ]
+    location:
+      groups: [ 'promo_read' ]
+    referenceAgate:
+      groups: [ 'promo_read' ]
+    previonalEndDate:
+      groups: [ 'promo_read' ]
+    fabrique:
+      groups: [ 'promo_read' ]
+    groupes:
+      groups: [ 'promo_read' ]
+    formateurs:
+      groups: [ 'promo_read' ]
+    startedAt:
+      groups: [ 'promo_read' ]
+    previsionalEndDate:
+      groups: [ 'promo_read' ]

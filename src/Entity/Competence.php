@@ -97,7 +97,7 @@ class Competence
 
     public function addNiveau(Niveau $niveau): self
     {
-        if (!$this->niveaux->contains($niveau) && $this->niveaux->count() <= 3) {
+        if (!$this->niveaux->contains($niveau)) {
             $this->niveaux[] = $niveau;
             $niveau->setCompetence($this);
         }

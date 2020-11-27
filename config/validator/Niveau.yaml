@@ -1,0 +1,20 @@
+App\Entity\Niveau:
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    critereEvaluation:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    groupeAction:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters

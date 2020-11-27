@@ -3,6 +3,8 @@ App\Entity\Competence:
     id:
       groups: [ 'competence_read','grpecompetence_read' ]
     libelle:
-      groups: [ 'competence_read','grpecompetence_read' ]
+      groups: [ 'competence_read','grpecompetence_read','competence_write' ]
     groupecompetences:
       groups: [ 'competence_read' ]
+    niveaux:
+      groups: [ 'competence_write' ]

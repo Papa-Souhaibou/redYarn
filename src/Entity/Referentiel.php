@@ -32,11 +32,6 @@ class Referentiel
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $programme;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $critereAdmission;
 
     /**
@@ -54,10 +49,21 @@ class Referentiel
      */
     private $isDeleted;
 
+    /**
+     * @ORM\Column(type="blob", nullable=true)
+     */
+    private $programme;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="referentiel")
+     */
+    private $promos;
+
     public function __construct()
     {
         $this->groupeCompetences = new ArrayCollection();
         $this->isDeleted = false;
+        $this->promos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,18 +91,6 @@ class Referentiel
     public function setPresentation(string $presentation): self
     {
         $this->presentation = $presentation;
-
-        return $this;
-    }
-
-    public function getProgramme(): ?string
-    {
-        return $this->programme;
-    }
-
-    public function setProgramme(string $programme): self
-    {
-        $this->programme = $programme;
 
         return $this;
     }
@@ -160,6 +154,48 @@ class Referentiel
     public function setIsDeleted(bool $isDeleted): self
     {
         $this->isDeleted = $isDeleted;
+
+        return $this;
+    }
+
+    public function getProgramme()
+    {
+        return $this->programme;
+    }
+
+    public function setProgramme($programme): self
+    {
+        $this->programme = $programme;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Promo[]
+     */
+    public function getPromos(): Collection
+    {
+        return $this->promos;
+    }
+
+    public function addPromo(Promo $promo): self
+    {
+        if (!$this->promos->contains($promo)) {
+            $this->promos[] = $promo;
+            $promo->setReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromo(Promo $promo): self
+    {
+        if ($this->promos->removeElement($promo)) {
+            // set the owning side to null (unless already changed)
+            if ($promo->getReferentiel() === $this) {
+                $promo->setReferentiel(null);
+            }
+        }
 
         return $this;
     }

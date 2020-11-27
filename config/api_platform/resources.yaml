@@ -4,6 +4,8 @@ resources:
         route_prefix: /admin
         normalization_context:
           groups: [ 'user_read' ]
+        security: is_granted('ROLE_ADMIN')
+        security_message: Only admins have accees to this resource.
       itemOperations:
         get_user:
           method: GET
@@ -44,10 +46,12 @@ resources:
     attributes:
       normalization_context:
         groups: [ 'user_read' ]
+      security: is_granted('ROLE_FORMATEUR')
     collectionOperations:
       get_apprenants:
         method: GET
         path: /apprenants
+        security: is_granted('ROLE_CM')
       add_apprenant:
         method: POST
         path: /apprenants
@@ -59,21 +63,25 @@ resources:
         path: /apprenants/{id}
         requirements:
           id: \d+
+        security: is_granted('ROLE_APPRENANT')
       set_apprenant:
         method: PUT
         path: /apprenants/{id}
         requirements:
           id: \d+
         controller: App\Controller\UserController::setUser
+        security: is_granted('ROLE_APPRENANT')
 
   App\Entity\Formateur:
     attributes:
       normalization_context:
         groups: [ 'user_read' ]
+      security: is_granted('ROLE_FORMATEUR')
       collectionOperations:
         get_formateurs:
           method: GET
           path: /formateurs
+          security: is_granted('ROLE_CM')
         add_formateur:
           method: POST
           path: /formateurs
@@ -83,6 +91,7 @@ resources:
           path: /formateurs/{id}
           requirements:
             id: \d+
+          security: is_granted('ROLE_CM')
         set_formateur:
           method: PUT
           path: /formateurs/{id}
@@ -138,6 +147,7 @@ resources:
   App\Entity\ProfilSortie:
       attributes:
         route_prefix: /admin
+        security: is_granted('ROLE_CM')
       properties:
         apprenants:
           requirements:
@@ -153,6 +163,7 @@ resources:
         add_profilSortie:
           method: POST
           path: /profilsorties
+          security: is_granted('ROLE_FORMATEUR')
       itemOperations:
         get_profilSortie:
           method: GET
@@ -164,12 +175,14 @@ resources:
           path: /profilsorties/{id}
           requirements:
             id: \d+
+          security: is_granted('ROLE_FORMATEUR')
 
   App\Entity\GroupeCompetence:
     attributes:
       normalization_context:
         groups: [ 'grpecompetence_read' ]
       route_prefix: /admin
+      security: is_granted('ROLE_CM')
     properties:
       competences:
         subresource:
@@ -183,45 +196,59 @@ resources:
           id: \d+
       set_grpecompetence:
         method: PUT
-        path: /grpecompeteces/{id}
+        path: /grpecompetences/{id}
         requirements:
           id: \d+
+        controller: App\Controller\GroupeCompetenceController::setGrpeCompetence
+        deserialize: false
       delete_grpecompetence:
         method: DELETE
         path: /grpecompetences/{id}
+        requirements:
+          id: \d+
+      get_competences_in_grpecompetence:
+        method: GET
+        path: /grpecompetences/{id}/competences
         requirements:
           id: \d+
     collectionOperations:
       get_grpecompetence:
         method: GET
         path: /grpecompetences
+      get_competences_in_grpecompetences:
+        method: GET
+        path: /grpecompetences/competences
+        security: is_granted('ROLE_ADMIN')
       add_grpecompetence:
         method: POST
         path: /grpecompetences
-        controller: App\Controller\GroupeCompetenceController::addGrpeCompetence
-        deserialize: false
+        security: is_granted('ROLE_ADMIN')
+        security_message: Only admin can create this ressource.
 
   App\Entity\Competence:
     attributes:
       normalization_context:
         groups: ['competence_read']
       route_prefix: /admin
-      #security: is_granted('ROLE_ADMIN')
-      #security_message: Acces denied
-
+      security: is_granted('ROLE_ADMIN')
+      security_message: Acces denied
     collectionOperations:
       get_competences:
         method: GET
         path: /competences
+        security: is_granted('ROLE_APPRENANT')
       add_competence:
         method: POST
         path: /competences
+        denormalization_context:
+          groups: [ 'competence_write' ]
     itemOperations:
       get_competence:
         method: GET
         path: /competences/{id}
         requirements:
           id: \d+
+        security: is_granted('ROLE_CM')
       set_competence:
         method: PUT
         path: /competences/{id}
@@ -233,7 +260,7 @@ resources:
       normalization_context:
         groups: ['referentiel_read']
       route_prefix: /admin
-      security: is_granted('ROLE_ADMIN')
+      security: is_granted('ROLE_CM')
       security_message: Access Denied
     properties:
       groupeCompetences:
@@ -244,6 +271,7 @@ resources:
       get_referentiels:
         method: GET
         path: /referentiels
+        security: is_granted('ROLE_APPRENANT')
       add_referentiel:
         method: POST
         path: /referentiels
@@ -253,8 +281,11 @@ resources:
         path: /referentiels/{id}
         requirements:
           id: \d+
-      get_grpcompetence_in_referentiel:
+        security: is_granted('ROLE_APPRENANT')
+      get_grpecompetence_in_referentiel:
         method: GET
+        path: /referentiels/{idRef}/grpecompetences/{idgrpe}
+        security: is_granted('ROLE_APPRENANT')
       set_referentiel:
         method: PUT
         path: /referentiels/{id}
@@ -265,3 +296,133 @@ resources:
         path: /referentiels/{id}
         requirements:
           id: \d+
+        security: is_granted('ROLE_ADMIN')
+
+  App\Entity\Promo:
+    attributes:
+      route_prefix: /admin
+      normalization_context:
+        groups: [ 'promo_read' ]
+      deserialize: false
+      security: is_granted('ROLE_FORMATEUR')
+      security_message: You're unauthorized to access this resource.
+    properties:
+      referentiel:
+        subresource:
+          resourceClass: App\Entity\Referentiel
+          security: is_granted('ROLE_CM')
+      groupes:
+        subresource:
+          resourceClass: App\Entity\Groupe
+    collectionOperations:
+      get_promos:
+        method: GET
+        path: /promos
+        security: is_granted('ROLE_CM')
+      add_promo:
+        method: POST
+        path: /promos
+        controller: App\Controller\PromoController::addPromo
+      get_promo_grpe_principals:
+        method: GET
+        path: /promos/principal
+        security: is_granted('ROLE_CM')
+      get_waiting_students_in_promos:
+        method: GET
+        path: /promos/apprenants/attente
+    itemOperations:
+      get_promo:
+        method: GET
+        path: /promos/{id}
+        requirements:
+          id: \d+
+        security: is_granted('ROLE_CM')
+      set_promo:
+        method: PUT
+        path: /promos/{id}
+        requirements:
+          id: \d+
+      delete_promo:
+        method: DELETE
+        path: /promos/{id}
+        requirements:
+          id: \d+
+        security: is_granted('ROLE_ADMIN')
+      get_promo_grpe_principal:
+        method: GET
+        path: /promos/{id}/principal
+        requirements:
+          id: \d+
+        security: is_granted('ROLE_CM')
+      get_waiting_student_in_promo:
+        method: GET
+        path: /promos/{id}/apprenants/attente
+        requirements:
+          id: \d+
+        security: is_granted('ROLE_CM')
+      get_student_in_grpe_promo:
+        method: GET
+        path: /promos/{idPromo}/groupes/{idGrpe}/apprenants
+        requirements:
+          idPromo: \d+
+          idGrpe: \d+
+        security: is_granted('ROLE_CM')
+      get_teachers_in_grpe:
+        method: GET
+        path: /promos/{id}/formateurs
+        requirements:
+          id: \d+
+        security: is_granted('ROLE_CM')
+      set_students_in_promo:
+        method: PUT
+        path: /promos/{id}/apprenants
+        requirements:
+          id: \d+
+      set_teacher_in_promo:
+        method: PUT
+        path: /promos/{id}/formateurs
+        requirements:
+          id: \d+
+      set_grpe_status_in_promo:
+        method: PUT
+        path: /promos/{idPromo}/groupes/{idGrpe}
+        requirements:
+          idPromo: \d+
+          idGrpe: \d+
+
+  App\Entity\Groupe:
+    attributes:
+      route_prefix: /admin
+      normalization_context:
+        groups: [ 'groupe_read' ]
+      security: is_granted('ROLE_FORMATEUR')
+    properties:
+      apprenants:
+        subresource:
+          resourceClass: App\Entity\Apprenant
+    collectionOperations:
+      get_groupes:
+        method: GET
+        path: /groupes
+      add_groupe:
+        method: POST
+        path: /groupes
+    itemOperations:
+      get_groupe:
+        method: GET
+        path: /groupes/{id}
+        requirements:
+          id: \d+
+      set_groupe:
+        method: PUT
+        path: /groupes/{id}
+        requirements:
+          id: \d+
+      delete_groupe:
+        method: DELETE
+        path: /groupes/{id}
+        requirements:
+          id: \d+
+      delete_student_in_group:
+        method: DELETE
+        path: /groupes/{idGrpe]/apprenants/{idAp}

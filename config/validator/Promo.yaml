@@ -1,0 +1,37 @@
+App\Entity\Promo:
+  properties:
+    language:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 5
+          minMessage: The min length is 5 characters
+    title:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    description:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    referenceAgate:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    referentiel:
+      - NotNull:
+          message: This field is required
+    startedAt:
+      - Type: \DateTimeInterface
+      - NotNull:
+          message: This field is required
+    previsionalEndDate:
+      - Type: \DateTimeInterface
+      - NotNull:
+          message: This field is required

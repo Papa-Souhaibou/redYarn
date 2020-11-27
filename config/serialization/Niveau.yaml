@@ -1,0 +1,7 @@
+App\Entity\Niveau:
+  libelle:
+    groups: [ 'competence_write' ]
+  critereEvaluation:
+    groups: [ 'competence_write' ]
+  groupeAction:
+    groups: [ 'competence_write' ]

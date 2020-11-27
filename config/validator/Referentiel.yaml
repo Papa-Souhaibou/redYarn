@@ -1,0 +1,14 @@
+App\Entity\Referentiel:
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    presentation:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters

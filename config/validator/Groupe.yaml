@@ -1,0 +1,8 @@
+App\Entity\Groupe:
+  properties:
+    name:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 6
+          minMessage: The min length is 6 characters

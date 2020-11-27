@@ -6,8 +6,6 @@ App\Entity\Referentiel:
       groups: ['referentiel_read']
     presentation:
       groups: ['referentiel_read']
-    programme:
-      groups: ['referentiel_read']
     critereAdmission:
       groups: ['referentiel_read']
     critereEvaluation:

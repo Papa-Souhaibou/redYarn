@@ -6,3 +6,5 @@ App\Entity\Profil:
       groups: [ 'profil_read','users_with_this_profil' ]
     users:
       groups: [ 'users_with_this_profil' ]
+    isDeleted:
+      groups: ['profil_read']

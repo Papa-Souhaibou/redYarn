@@ -1,0 +1,15 @@
+App\Entity\Competence:
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    niveaux:
+      - Count:
+          min: 3
+          max: 3
+          minMessage: You must specify at least 3 levels
+          maxMessage: You cannot specify more than {{ limit }} levels
+      - Valid: ~

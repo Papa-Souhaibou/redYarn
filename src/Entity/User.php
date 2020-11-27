@@ -202,7 +202,12 @@ class User implements UserInterface
 
     public function getAvatar()
     {
-        return $this->avatar;
+        if ($this->avatar)
+        {
+            $stream = stream_get_contents($this->avatar);
+            return base64_encode($stream);
+        }
+        return null;
     }
 
     public function setAvatar($avatar): self

@@ -1,0 +1,12 @@
+App\Entity\Groupe:
+  attributes:
+    id:
+      groups: [ 'groupe_read','promo_read' ]
+    name:
+      groups: [ 'groupe_read','promo_read' ]
+    createdAt:
+      groups: [ 'groupe_read','promo_read' ]
+    status:
+      groups: [ 'groupe_read','promo_read' ]
+    type:
+      groups: [ 'groupe_read','promo_read' ]

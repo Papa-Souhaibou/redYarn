@@ -33,6 +33,16 @@ class CompetenceDataPersister implements ContextAwareDataPersisterInterface
     public function remove($data, array $context = [])
     {
         $data->setIsDeleted(true);
+        $groupes = $data->getGroupeCompetences();
+        array_map(function ($groupe,$data){
+            $groupe->removeCompetence($data);
+            $data->removeGroupeCompetence($groupe);
+        },$groupes,$data);
+        $niveaux = $data->getNiveaux();
+        array_map(function ($niveau,$data){
+            $data->removeNiveau($niveau);
+            $niveau->setIsDeleted(true);
+        },$niveaux,$data);
         $this->manager->flush();
         return $data;
     }

@@ -1,0 +1,17 @@
+App\Entity\GroupeCompetence:
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 6
+          minMessage: The min length is 6 characters
+    descriptif:
+      - NotBlank:
+          message: This field is required
+      - Length:
+          min: 10
+          minMessage: The min length is 10 characters
+    competences:
+      - NotBlank:
+          message: This field is required

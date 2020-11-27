@@ -45,12 +45,12 @@ class UserController extends AbstractController
         $status = Response::HTTP_BAD_REQUEST;
         if ($value instanceof User)
         {
-            $user->setFirstname( !empty($value->getFirstname()) ? $value->getFirstname() : "")
-                ->setLastname(!empty($value->getLastname()) ? $value->getLastname() : "")
+            $user->setFirstname( !empty($value->getFirstname()) ? $value->getFirstname() : $user->getFirstname())
+                ->setLastname(!empty($value->getLastname()) ? $value->getLastname() : $user->getLastname())
                 ->setPassword($value->getPassword())
                 ->setEmail($value->getEmail())
-                ->setAvatar(empty($value->getAvatar()) ? $value->getAvatar() : null)
-                ->setUsername($value->getUsername());
+                ->setAvatar(!empty($value->getAvatar()) ? $value->getAvatar() : $user->getAvatar())
+                ->setUsername(!empty($value->getUsername()) ? $value->getUsername() : $user->getUsername());
             $this->manager->flush();
             fclose($this->createUser->getAvatarResource());
             $status = Response::HTTP_CREATED;

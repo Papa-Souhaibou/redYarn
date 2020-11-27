@@ -20,7 +20,6 @@ class ReferentielFixtures extends Fixture implements  FixtureGroupInterface
             $referentiel->setLibelle($faker->paragraph(2))
                 ->setCritereEvaluation($faker->paragraph(2))
                 ->setCritereAdmission($faker->paragraph(2))
-                ->setProgramme($faker->paragraph(2))
                 ->setPresentation($faker->paragraph(2));
             $manager->persist($referentiel);
         }
