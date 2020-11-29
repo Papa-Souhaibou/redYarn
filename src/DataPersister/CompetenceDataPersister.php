@@ -6,15 +6,18 @@ namespace App\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\Entity\Competence;
+use App\Repository\CompetenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CompetenceDataPersister implements ContextAwareDataPersisterInterface
 {
     private  $manager;
+    private $competenceRepository;
 
-    public function __construct(EntityManagerInterface $manager)
+    public function __construct(EntityManagerInterface $manager,CompetenceRepository $competenceRepository)
     {
         $this->manager = $manager;
+        $this->competenceRepository = $competenceRepository;
     }
 
     public function supports($data, array $context = []): bool
@@ -25,24 +28,27 @@ class CompetenceDataPersister implements ContextAwareDataPersisterInterface
     public function persist($data, array $context = [])
     {
         if (isset($context["collection_operation_name"]))
+        {
             $this->manager->persist($data);
+        }
         $this->manager->flush();
-        return $data;
     }
 
     public function remove($data, array $context = [])
     {
         $data->setIsDeleted(true);
         $groupes = $data->getGroupeCompetences();
-        array_map(function ($groupe,$data){
+        $niveaux = $data->getNiveaux();
+        foreach ($groupes as $groupe)
+        {
             $groupe->removeCompetence($data);
             $data->removeGroupeCompetence($groupe);
-        },$groupes,$data);
-        $niveaux = $data->getNiveaux();
-        array_map(function ($niveau,$data){
+        }
+        foreach ($niveaux as $niveau)
+        {
             $data->removeNiveau($niveau);
             $niveau->setIsDeleted(true);
-        },$niveaux,$data);
+        }
         $this->manager->flush();
         return $data;
     }

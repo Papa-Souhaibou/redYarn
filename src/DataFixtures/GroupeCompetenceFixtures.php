@@ -3,14 +3,16 @@
 namespace App\DataFixtures;
 
 use App\Entity\GroupeCompetence;
+use App\Entity\Niveau;
 use App\Repository\CompetenceRepository;
 use App\Repository\ReferentielRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class GroupeCompetenceFixtures extends Fixture implements  FixtureGroupInterface
+class GroupeCompetenceFixtures extends Fixture implements  FixtureGroupInterface,DependentFixtureInterface
 {
     private $skillRepository;
     private $referentielRepository;
@@ -46,6 +48,13 @@ class GroupeCompetenceFixtures extends Fixture implements  FixtureGroupInterface
         return array(
             "createGrpecompetence",
             "grpecompetence"
+        );
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            NiveauFixtures::class
         );
     }
 }

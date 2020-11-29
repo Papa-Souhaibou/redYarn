@@ -65,12 +65,8 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="blob", nullable=true)
      */
-    private $avatar;
+    private $avatar = null;
 
-    public function __invoke(Request $request)
-    {
-        dd($request);
-    }
 
     public function getId(): ?int
     {
@@ -202,10 +198,10 @@ class User implements UserInterface
 
     public function getAvatar()
     {
-        if ($this->avatar)
+        if (isset($this->avatar))
         {
             $stream = stream_get_contents($this->avatar);
-            return base64_encode($stream);
+            return \base64_encode($stream);
         }
         return null;
     }

@@ -30,7 +30,7 @@ class Competence
     private $groupeCompetences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade={"persist"})
      */
     private $niveaux;
 

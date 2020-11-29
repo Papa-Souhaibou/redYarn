@@ -1,7 +1,10 @@
 App\Entity\Niveau:
-  libelle:
-    groups: [ 'competence_write' ]
-  critereEvaluation:
-    groups: [ 'competence_write' ]
-  groupeAction:
-    groups: [ 'competence_write' ]
+  attributes:
+    id:
+      groups: ['niveau:read','competence:read']
+    libelle:
+      groups: [ 'competence:read', 'niveau:read' ]
+    critereEvaluation:
+      groups: [ 'competence:read','niveau:read' ]
+    groupeAction:
+      groups: [ 'competence:read','niveau:read' ]

@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends AbstractController
 {
     private $avatarName = "avatar";
-    private $entityNameSpace = "App\Entity\Admin";
     private $manager,
             $createUser;
 
@@ -26,17 +25,28 @@ class UserController extends AbstractController
 
     public function addUser(Request $request,ProfilRepository $profilRepository)
     {
-        $profil = $profilRepository->findOneBy(["libelle" => "ADMIN"]);
-        $result = $this->createUser->createUserContent($request,$this->avatarName,$this->entityNameSpace,$profil);
-        $status = Response::HTTP_BAD_REQUEST;
-        if ($result instanceof User)
+        $idProfil = (int)$request->get("idProfil");
+        $profil = $profilRepository->findOneById($idProfil);
+        $profils = ["ADMIN","FORMATEUR","CM"];
+        if ($profil)
         {
-            $this->manager->persist($result);
-            $this->manager->flush();
-            fclose($this->createUser->getAvatarResource());
-            $status = Response::HTTP_CREATED;
+            $libelle = $profil->getLibelle();
+            if (in_array($libelle,$profils))
+            {
+                $namespace = ucfirst(strtolower($libelle));
+                $result = $this->createUser->createUserContent($request,$this->avatarName,"App\\Entity\\$namespace",$profil);
+                $status = Response::HTTP_BAD_REQUEST;
+                if ($result instanceof User)
+                {
+                    $this->manager->persist($result);
+                    $this->manager->flush();
+                    fclose($this->createUser->getAvatarResource());
+                    $status = Response::HTTP_CREATED;
+                }
+                return $this->json($result,$status);
+            }
         }
-        return $this->json($result,$status);
+        return $this->json(["message"=>"Please give a validate profil"],Response::HTTP_BAD_REQUEST);
     }
 
     public function setUser(User $user,Request $request)

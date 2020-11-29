@@ -118,7 +118,6 @@ resources:
             groups: [ 'users_with_this_profil' ]
         get_users_with_this_profil:
           method: GET
-
     collectionOperations:
       get_profils:
         method: GET
@@ -126,7 +125,6 @@ resources:
       add_profil:
         method: POST
         path: /profils
-
     itemOperations:
       get_profil:
         method: GET
@@ -228,7 +226,7 @@ resources:
   App\Entity\Competence:
     attributes:
       normalization_context:
-        groups: ['competence_read']
+        groups: ['competence:read']
       route_prefix: /admin
       security: is_granted('ROLE_ADMIN')
       security_message: Acces denied
@@ -240,8 +238,6 @@ resources:
       add_competence:
         method: POST
         path: /competences
-        denormalization_context:
-          groups: [ 'competence_write' ]
     itemOperations:
       get_competence:
         method: GET
@@ -251,6 +247,11 @@ resources:
         security: is_granted('ROLE_CM')
       set_competence:
         method: PUT
+        path: /competences/{id}
+        requirements:
+          id: \d+
+      delee_competence:
+        method: DELETE
         path: /competences/{id}
         requirements:
           id: \d+
@@ -426,3 +427,5 @@ resources:
       delete_student_in_group:
         method: DELETE
         path: /groupes/{idGrpe]/apprenants/{idAp}
+
+

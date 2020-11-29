@@ -35,7 +35,17 @@ class GroupeCompetenceRepository extends ServiceEntityRepository
         ;
     }
     */
-
+    public function findCompetenceInReferentiel(int $idRef,int $idGrpe)
+    {
+        return $this->createQueryBuilder("grpeCom")
+            ->innerJoin("grpeCom.referentiels","ref")
+            ->andWhere("grpeCom.id = :idGrpe")
+            ->setParameter("idGrpe",$idGrpe)
+            ->andWhere("ref.id=:idRef")
+            ->setParameter("idRef",$idRef)
+            ->getQuery()
+            ->getResult();
+    }
     /*
     public function findOneBySomeField($value): ?GroupeCompetence
     {
