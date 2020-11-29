@@ -1,0 +1,39 @@
+App\Entity\Groupe:
+  attributes:
+    route_prefix: /admin
+    normalization_context:
+      groups: [ 'groupe_read' ]
+    security: is_granted('ROLE_FORMATEUR')
+  properties:
+    apprenants:
+      subresource:
+        resourceClass: App\Entity\Apprenant
+  collectionOperations:
+    get_groupes:
+      method: GET
+      path: /groupes
+    add_groupe:
+      method: POST
+      path: /groupes
+  itemOperations:
+    get_groupe:
+      method: GET
+      path: /groupes/{id}
+      requirements:
+        id: \d+
+    set_groupe:
+      method: PUT
+      path: /groupes/{id}
+      requirements:
+        id: \d+
+    delete_groupe:
+      method: DELETE
+      path: /groupes/{id}
+      requirements:
+        id: \d+
+    delete_student_in_group:
+      method: DELETE
+      path: /groupes/{idGrpe}/apprenants/{idAp}
+      requirements:
+        idGrpe: \d+
+        idAp: \d+

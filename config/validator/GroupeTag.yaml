@@ -1,0 +1,10 @@
+App\Entity\GroupeTag:
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+    tags:
+      - Count:
+          min: 1
+          minMessage: This groupetag must be at least associated with {{ limit }} Tag
+      - Valid: ~

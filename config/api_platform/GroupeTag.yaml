@@ -1,0 +1,44 @@
+App\Entity\GroupeTag:
+  attributes:
+    route_prefix: /admin
+    security: is_granted('ROLE_FORMATEUR')
+    security_message: You are unauthorized to access this ressource.
+    normalization_context:
+      groups: [ 'grpetag:read' ]
+  properties:
+    tags:
+      subresource:
+        resourceClass: App\Entity\Tag
+        collection: true
+  collectionOperations:
+    get_grpetags:
+      method: GET
+      path: /grpetags
+    add_grpetag:
+      method: POST
+      path: /grpetags
+      denormalization_context:
+        groups: [ 'grpetag:write' ]
+    get_tags_in_grpetag:
+      method: GET
+      path: /grpetags/{id}/tags
+      requirements:
+        id: \d+
+  itemOperations:
+    get_grpetag:
+      method: GET
+      path: /grpetags/{id}
+      requirements:
+        id: \d+
+    set_grpetag:
+      method: PUT
+      path: /grpetags/{id}
+      requirements:
+        id: \d+
+    delete_grpetag:
+      method: DELETE
+      path: /grpetags/{id}
+      requirements:
+        id: \d+
+      security: is_granted('ROLE_ADMIN')
+      security_message: You are unauthorized to delete this ressource.

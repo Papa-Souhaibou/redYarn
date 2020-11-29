@@ -1,0 +1,10 @@
+App\Entity\GroupeTag:
+  attributes:
+    id:
+      groups: [ 'tag:write', 'grpetag:read', 'tag:read' ]
+    libelle:
+      groups: [ 'tag:write', 'grpetag:write', 'grpetag:read', 'tag:read' ]
+    tags:
+      groups: [ 'grpetag:write', 'grpetag:read' ]
+    isDeleted:
+      groups: [ 'grpetag:read', 'tag:read' ]

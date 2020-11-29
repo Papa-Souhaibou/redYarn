@@ -1,0 +1,32 @@
+App\Entity\Competence:
+  attributes:
+    normalization_context:
+      groups: ['competence:read']
+    route_prefix: /admin
+    security: is_granted('ROLE_ADMIN')
+    security_message: Acces denied
+  collectionOperations:
+    get_competences:
+      method: GET
+      path: /competences
+      security: is_granted('ROLE_APPRENANT')
+    add_competence:
+      method: POST
+      path: /competences
+  itemOperations:
+    get_competence:
+      method: GET
+      path: /competences/{id}
+      requirements:
+        id: \d+
+      security: is_granted('ROLE_CM')
+    set_competence:
+      method: PUT
+      path: /competences/{id}
+      requirements:
+        id: \d+
+    delete_competence:
+      method: DELETE
+      path: /competences/{id}
+      requirements:
+        id: \d+

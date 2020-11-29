@@ -1,0 +1,29 @@
+App\Entity\Apprenant:
+  attributes:
+    normalization_context:
+      groups: [ 'user_read' ]
+    security: is_granted('ROLE_FORMATEUR')
+  collectionOperations:
+    get_apprenants:
+      method: GET
+      path: /apprenants
+      security: is_granted('ROLE_CM')
+    add_apprenant:
+      method: POST
+      path: /apprenants
+      controller: App\Controller\ApprenantController::addStudent
+      deserialize: false
+  itemOperations:
+    get_apprenant:
+      method: GET
+      path: /apprenants/{id}
+      requirements:
+        id: \d+
+      security: is_granted('ROLE_APPRENANT')
+    set_apprenant:
+      method: PUT
+      path: /apprenants/{id}
+      requirements:
+        id: \d+
+      controller: App\Controller\UserController::setUser
+      security: is_granted('ROLE_APPRENANT')

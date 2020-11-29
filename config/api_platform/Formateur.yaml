@@ -1,0 +1,26 @@
+App\Entity\Formateur:
+  attributes:
+    normalization_context:
+      groups: [ 'user_read' ]
+    security: is_granted('ROLE_FORMATEUR')
+  collectionOperations:
+    get_formateurs:
+      method: GET
+      path: /formateurs
+      security: is_granted('ROLE_CM')
+    add_formateur:
+      method: POST
+      path: /formateurs
+  itemOperations:
+    get_formateur:
+      method: GET
+      path: /formateurs/{id}
+      requirements:
+        id: \d+
+      security: is_granted('ROLE_CM')
+    set_formateur:
+      method: PUT
+      path: /formateurs/{id}
+      requirements:
+        id: \d+
+      controller: App\Controller\UserController::setUser

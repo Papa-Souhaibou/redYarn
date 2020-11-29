@@ -1,0 +1,32 @@
+App\Entity\ProfilSortie:
+  attributes:
+    route_prefix: /admin
+    security: is_granted('ROLE_CM')
+  properties:
+    apprenants:
+      requirements:
+        id: \d
+      subresource:
+        path: /profilsorties/{id}/apprenants
+        resourceClass: App\Entity\Apprenant
+        collection: true
+  collectionOperations:
+    get_profilSorties:
+      method: GET
+      path: /profilsorties
+    add_profilSortie:
+      method: POST
+      path: /profilsorties
+      security: is_granted('ROLE_FORMATEUR')
+  itemOperations:
+    get_profilSortie:
+      method: GET
+      path: /profilsorties/{id}
+      requirements:
+        id: \d+
+    set_profilSortie:
+      method: PUT
+      path: /profilsorties/{id}
+      requirements:
+        id: \d+
+      security: is_granted('ROLE_FORMATEUR')

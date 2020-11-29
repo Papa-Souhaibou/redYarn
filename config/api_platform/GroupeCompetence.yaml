@@ -1,0 +1,47 @@
+App\Entity\GroupeCompetence:
+  attributes:
+    normalization_context:
+      groups: [ 'grpecompetence_read' ]
+    route_prefix: /admin
+    security: is_granted('ROLE_CM')
+  properties:
+    competences:
+      subresource:
+        resourceClass: App\Entity\Competence
+        collection: false
+  itemOperations:
+    get_grpecompetence:
+      method: GET
+      path: /grpecompetences/{id}
+      requirements:
+        id: \d+
+    set_grpecompetence:
+      method: PUT
+      path: /grpecompetences/{id}
+      requirements:
+        id: \d+
+      controller: App\Controller\GroupeCompetenceController::setGrpeCompetence
+      deserialize: false
+    delete_grpecompetence:
+      method: DELETE
+      path: /grpecompetences/{id}
+      requirements:
+        id: \d+
+    get_competences_in_grpecompetence:
+      method: GET
+      path: /grpecompetences/{id}/competences
+      requirements:
+        id: \d+
+  collectionOperations:
+    get_grpecompetence:
+      method: GET
+      path: /grpecompetences
+    get_competences_in_grpecompetences:
+      method: GET
+      path: /grpecompetences/competences
+      security: is_granted('ROLE_ADMIN')
+    add_grpecompetence:
+      method: POST
+      path: /grpecompetences
+      security: is_granted('ROLE_ADMIN')
+      security_message: Only admin can create this ressource.

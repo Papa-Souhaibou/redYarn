@@ -1,0 +1,42 @@
+App\Entity\Profil:
+  attributes:
+    normalization_context:
+      groups: ['profil_read']
+    route_prefix: /admin
+    security: is_granted('ROLE_ADMIN')
+    security_message: Only admins have access to this resource.
+  properties:
+    users:
+      subresource:
+        resourceClass: App\Entity\User
+        collection: false
+  subresourceOperations:
+    collectionOperations:
+      attributes:
+        normalization_context:
+          groups: [ 'users_with_this_profil' ]
+      get_users_with_this_profil:
+        method: GET
+  collectionOperations:
+    get_profils:
+      method: GET
+      path: /profils
+    add_profil:
+      method: POST
+      path: /profils
+  itemOperations:
+    get_profil:
+      method: GET
+      path: /profils/{id}
+      requirements:
+        id: \d+
+    set_profil:
+      method: PUT
+      path: /profils/{id}
+      requirements:
+        id: \d+
+    delete_profil:
+      method: DELETE
+      path: /profils/{id}
+      requirements:
+        id: \d+

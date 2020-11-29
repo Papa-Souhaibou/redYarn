@@ -1,0 +1,11 @@
+App\Entity\Tag:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: libelle
+  properties:
+    libelle:
+      - NotBlank:
+          message: This field is required
+    groupeTags:
+      - Count:
+          min: 1
+          minMessage: This tag must be at least in {{ limit }} groupeTag

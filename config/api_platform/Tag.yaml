@@ -1,0 +1,34 @@
+App\Entity\Tag:
+  attributes:
+    route_prefix: /admin
+    normalization_context:
+      groups: [ 'tag:read' ]
+    security: is_granted('ROLE_FORMATEUR')
+    security_message: You are unauthorized to access this ressource.
+  collectionOperations:
+    add_tag:
+      method: POST
+      path: /tags
+      denormalization_context:
+        groups: [ 'tag:write' ]
+    get_tags:
+      method: GET
+      path: /tags
+  itemOperations:
+    get_tag:
+      method: GET
+      path: /tags/{id}
+      requirements:
+        id: \d+
+    set_tag:
+      method: PUT
+      path: /tags/{id}
+      requirements:
+        id: \d+
+    delete_tag:
+      method: DELETE
+      path: /tags/{id}
+      requirements:
+        id: \d+
+      security: is_granted('ROLE_ADMIN')
+      security_message: You are unauthorized to delete this ressource.

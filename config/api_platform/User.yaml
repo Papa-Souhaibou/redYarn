@@ -1,0 +1,36 @@
+App\Entity\User:
+  attributes:
+    route_prefix: /admin
+    normalization_context:
+      groups: [ 'user_read' ]
+    security: is_granted('ROLE_ADMIN')
+    security_message: Only admins have accees to this resource.
+  itemOperations:
+    get_user:
+      method: GET
+      path: /users/{id}
+      requirements:
+        id: \d+
+    set_user:
+      method: PUT
+      path: /users/{id}
+      requirements:
+        id: \d+
+      controller: App\Controller\UserController::setUser
+      deserialize: false
+    delete_user:
+      method: DELETE
+      path: /users/{id}
+      requirements:
+        id: \d+
+  collectionOperations:
+    get_users:
+      method: GET
+      path: /users
+    add_user:
+      method: POST
+      path: /users
+      normalization_context:
+        groups: [ 'user_read' ]
+      controller: App\Controller\UserController::addUser
+      deserialize: false

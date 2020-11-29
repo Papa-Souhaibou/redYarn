@@ -1,0 +1,4 @@
+App\Entity\Admin:
+  attributes:
+    normalization_context:
+      groups: [ 'user_read' ]
