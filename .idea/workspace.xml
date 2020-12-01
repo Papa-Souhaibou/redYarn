@@ -23,27 +23,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48f35e83-166c-41bf-8266-691deb249f8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Admin.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Apprenant.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Competence.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Formateur.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Groupe.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/GroupeCompetence.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/GroupeTag.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Profil.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/ProfilSortie.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Promo.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Referentiel.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/Tag.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api_platform/User.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/serialization/GroupeTag.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/serialization/Tag.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/validator/GroupeTag.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/validator/Tag.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/GroupeTagDataPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/TagDataPersister.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/EntityReferentielInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/Mailer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/PasswordGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/email/congratulation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/api_platform/resources.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/api_platform/Promo.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/api_platform/Promo.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/api_platform/Referentiel.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/api_platform/Referentiel.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/serialization/Competence.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/serialization/Competence.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/serialization/Groupe.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/serialization/Groupe.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/serialization/GroupeCompetence.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/serialization/GroupeCompetence.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/serialization/Promo.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/serialization/Promo.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/serialization/Referentiel.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/serialization/Referentiel.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/serialization/User.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/serialization/User.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/validator/Referentiel.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/validator/Referentiel.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PromoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PromoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReferentielController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReferentielController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ApprenantFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ApprenantFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataPersister/CompetenceDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/CompetenceDataPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataPersister/PromoDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/PromoDataPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Apprenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/GroupeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/GroupeRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/EntityPromoInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/EntityPromoInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +177,12 @@
       <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/vendor/hackzilla/password-generator" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kMnqwjXTJQnBcwglsX24OdcH0U" />
@@ -234,7 +247,15 @@
       <workItem from="1606573254160" duration="8855000" />
       <workItem from="1606582474715" duration="9792000" />
       <workItem from="1606598250923" duration="4000" />
-      <workItem from="1606652501129" duration="12683000" />
+      <workItem from="1606652501129" duration="13172000" />
+      <workItem from="1606667919072" duration="46000" />
+      <workItem from="1606719181528" duration="10757000" />
+      <workItem from="1606737108254" duration="801000" />
+      <workItem from="1606737931658" duration="688000" />
+      <workItem from="1606738730826" duration="12629000" />
+      <workItem from="1606762870385" duration="197000" />
+      <workItem from="1606804138051" duration="6005000" />
+      <workItem from="1606810854818" duration="23947000" />
     </task>
     <servers />
   </component>
@@ -262,15 +283,19 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="555" y="200" width="800" height="678" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605540845980" />
+    <state x="342" y="215" width="1226" height="649" key="#com.intellij.featureStatistics.actions.ShowFeatureUsageStatisticsDialog" timestamp="1606738429031">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="342" y="215" width="1226" height="649" key="#com.intellij.featureStatistics.actions.ShowFeatureUsageStatisticsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606738429031" />
     <state x="563" y="337" width="792" height="405" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606657292059">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="563" y="337" width="792" height="405" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1606657292059" />
-    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser" timestamp="1606664763331">
+    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser" timestamp="1606731323998">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="743" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1606592311971" />
-    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1606664763331" />
+    <state x="743" y="219" width="433" height="640" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1606731323998" />
     <state x="687" y="331" width="525" height="417" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605983129009">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -315,15 +340,19 @@
     </state>
     <state width="1292" height="277" key="GridCell.Tab.0.right/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1606575834456" />
     <state width="1292" height="277" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606215650833" />
-    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog" timestamp="1606664746852">
+    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog" timestamp="1606833007626">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="593" y="244" key="NewPhpClassDialog/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1606578413596" />
-    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606664746852" />
+    <state x="593" y="244" width="724" height="591" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606833007626" />
     <state x="486" y="174" width="947" height="731" key="SettingsEditor" timestamp="1606142832107">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="486" y="174" width="947" height="731" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1606142832107" />
+    <state width="524" height="445" key="SwitcherDM" timestamp="1606832037326">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="524" height="445" key="SwitcherDM/0.0.1920.1080@0.0.1920.1080" timestamp="1606832037326" />
     <state x="827" y="385" width="255" height="308" key="cloudConfig.SelfSettingsDialog" timestamp="1605519564764">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

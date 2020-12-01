@@ -11,9 +11,17 @@ App\Entity\Promo:
       subresource:
         resourceClass: App\Entity\Referentiel
         security: is_granted('ROLE_CM')
+        security_message: You're unauthorized to access this resource.
+        normalization_context:
+          groups: [ 'referentiel_in_promo:read' ]
     groupes:
       subresource:
         resourceClass: App\Entity\Groupe
+    formateurs:
+      subresource:
+        resourceClass: App\Entity\Formateur
+        security: is_granted('ROLE_CM')
+        security_message: You're unauthorized to access this resource.
   collectionOperations:
     get_promos:
       method: GET
@@ -23,13 +31,17 @@ App\Entity\Promo:
       method: POST
       path: /promos
       controller: App\Controller\PromoController::addPromo
-    get_promo_grpe_principals:
+    get_promo_grpe_principaux:
       method: GET
       path: /promos/principal
       security: is_granted('ROLE_CM')
+      controller: App\Controller\PromoController::getGrpePrincipaux
     get_waiting_students_in_promos:
       method: GET
       path: /promos/apprenants/attente
+      normalization_context:
+        groups: [ 'waiting_student:read' ]
+      controller: App\Controller\PromoController::getPromoWaitingStudents
   itemOperations:
     get_promo:
       method: GET
@@ -42,6 +54,7 @@ App\Entity\Promo:
       path: /promos/{id}
       requirements:
         id: \d+
+      controller: App\Controller\PromoController::setPromo
     delete_promo:
       method: DELETE
       path: /promos/{id}
@@ -51,22 +64,31 @@ App\Entity\Promo:
     get_promo_grpe_principal:
       method: GET
       path: /promos/{id}/principal
+      controller: App\Controller\PromoController::getGrpePrincipalInPromo
+      normalization_context:
+        groups: [ 'grpe_principal_in_promo:read']
       requirements:
         id: \d+
       security: is_granted('ROLE_CM')
     get_waiting_student_in_promo:
       method: GET
       path: /promos/{id}/apprenants/attente
+      controller: App\Controller\PromoController::getWaitingStudentsInPromo
       requirements:
         id: \d+
       security: is_granted('ROLE_CM')
-    get_student_in_grpe_promo:
+    get_students_in_grpe_promo:
       method: GET
       path: /promos/{idPromo}/groupes/{idGrpe}/apprenants
+      controller: App\Controller\PromoController::getStudentInPromoGrpe
+      defaults:
+        _api_receive: false
       requirements:
         idPromo: \d+
         idGrpe: \d+
       security: is_granted('ROLE_CM')
+      normalization_context:
+        groups: [ 'get_students_in_grpe_promo:read' ]
     get_teachers_in_grpe:
       method: GET
       path: /promos/{id}/formateurs
@@ -76,16 +98,19 @@ App\Entity\Promo:
     set_students_in_promo:
       method: PUT
       path: /promos/{id}/apprenants
+      controller: App\Controller\PromoController::setStudentsInPromo
       requirements:
         id: \d+
     set_teacher_in_promo:
       method: PUT
       path: /promos/{id}/formateurs
+      controller: App\Controller\PromoController::setTeacherInPromo
       requirements:
         id: \d+
     set_grpe_status_in_promo:
       method: PUT
       path: /promos/{idPromo}/groupes/{idGrpe}
+      controller: App\Controller\PromoController::setPromoGrpeStatus
       requirements:
         idPromo: \d+
         idGrpe: \d+

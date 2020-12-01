@@ -36,6 +36,63 @@ class GroupeRepository extends ServiceEntityRepository
     }
     */
 
+    public function findGrpeInPromo($idPro,$type)
+    {
+        return $this->createQueryBuilder('g')
+                ->innerJoin('g.promo','promo')
+                ->andWhere('promo.id=:idPro')
+                ->setParameter('idPro',$idPro)
+                ->andWhere('g.type=:type')
+                ->setParameter('type',$type)
+                ->getQuery()
+                ->getResult();
+    }
+
+    public function findWaitingStudents($status)
+    {
+        return $this->createQueryBuilder('g')
+            ->innerJoin('g.apprenants','a')
+            ->andWhere('a.isWaiting=:status')
+            ->setParameter('status',$status)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findWaitingStudentsInPromo($id,$status)
+    {
+        return $this->createQueryBuilder("g")
+                ->innerJoin('g.promo','p')
+                ->andWhere('p.id=:id')
+                ->setParameter('id',$id)
+                ->innerJoin('g.apprenants',"a")
+                ->andWhere('a.isWaiting=:status')
+                ->setParameter('status',$status)
+                ->getQuery()
+                ->getResult();
+    }
+
+    public function findStudentInPromoGrpe($idPromo,$idGrpe)
+    {
+        return $this->createQueryBuilder('g')
+                ->andWhere('g.id=:idGrpe')
+                ->setParameter('idGrpe',$idGrpe)
+                ->innerJoin('g.promo','p')
+                ->andWhere('p.id=:idPromo')
+                ->setParameter('idPromo',$idPromo)
+                ->getQuery()
+                ->getResult();
+    }
+
+    public function fetchGroupesInPromo($idPromo)
+    {
+        return $this->createQueryBuilder('g')
+                ->innerJoin('g.promo','p')
+                ->andWhere('p.id=:idPromo')
+                ->setParameter('idPromo',$idPromo)
+                ->getQuery()
+                ->getResult();
+    }
+    
     /*
     public function findOneBySomeField($value): ?Groupe
     {

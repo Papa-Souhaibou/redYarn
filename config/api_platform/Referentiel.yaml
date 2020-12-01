@@ -18,6 +18,8 @@ App\Entity\Referentiel:
     add_referentiel:
       method: POST
       path: /referentiels
+      controller: App\Controller\ReferentielController::addReferentiel
+      deserialize: false
   itemOperations:
     get_referentiel:
       method: GET
@@ -27,13 +29,22 @@ App\Entity\Referentiel:
       security: is_granted('ROLE_APPRENANT')
     get_grpecompetence_in_referentiel:
       method: GET
-      path: /referentiels/{idRef}/grpecompetences/{idgrpe}
+      path: /referentiels/{idRef}/grpecompetences/{idGrpe}
       security: is_granted('ROLE_APPRENANT')
+      controller: App\Controller\ReferentielController::getCompetencesInReferentiel
+      defaults:
+        _api_receive: false
+      requirements:
+        idRef: \d+
+        idGrpe: \d+
     set_referentiel:
       method: PUT
       path: /referentiels/{id}
       requirements:
         id: \d+
+      controller: App\Controller\ReferentielController::setReferentiel
+      defaults:
+        _api_receive: false
     delete_referentiel:
       method: DELETE
       path: /referentiels/{id}

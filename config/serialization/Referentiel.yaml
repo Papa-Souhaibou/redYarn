@@ -1,14 +1,14 @@
 App\Entity\Referentiel:
   attributes:
     id:
-      groups: ['referentiel_read']
+      groups: ['referentiel_read', 'grpe_principal_in_promo:read','referentiel_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read']
     libelle:
-      groups: ['referentiel_read']
+      groups: ['referentiel_read', 'grpe_principal_in_promo:read','referentiel_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read']
     presentation:
-      groups: ['referentiel_read']
+      groups: ['referentiel_read', 'grpe_principal_in_promo:read','referentiel_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read']
     critereAdmission:
-      groups: ['referentiel_read']
+      groups: ['referentiel_read', 'grpe_principal_in_promo:read','referentiel_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read']
     critereEvaluation:
-      groups: ['referentiel_read']
+      groups: ['referentiel_read', 'grpe_principal_in_promo:read','referentiel_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read']
     groupeCompetences:
-      groups: ['referentiel_read']
+      groups: ['referentiel_read','referentiel_in_promo:read']

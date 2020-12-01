@@ -30,6 +30,17 @@ class PromoDataPersister implements ContextAwareDataPersisterInterface
     public function remove($data, array $context = [])
     {
         $data->setIsDeleted(true);
+        $groupes = $data->getGroupes();
+        $formateurs = $data->getFormateurs();
+        foreach ($groupes as $groupe){
+            $students = $groupe->getApprenants();
+            foreach ($students as $student){
+                $student->removeGroupe($groupe);
+            }
+        }
+        foreach ($formateurs as $formateur){
+            $formateur->removePromo($data);
+        }
         $this->manger->flush();
     }
 }

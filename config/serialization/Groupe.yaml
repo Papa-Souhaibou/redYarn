@@ -1,12 +1,18 @@
 App\Entity\Groupe:
   attributes:
     id:
-      groups: [ 'groupe_read','promo_read' ]
+      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
     name:
-      groups: [ 'groupe_read','promo_read' ]
+      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
     createdAt:
-      groups: [ 'groupe_read','promo_read' ]
+      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
     status:
-      groups: [ 'groupe_read','promo_read' ]
+      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
     type:
-      groups: [ 'groupe_read','promo_read' ]
+      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
+    apprenants:
+      groups: [ 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+    formateurs:
+      groups: [ 'grpe_principal_in_promo:read' ]
+    promo:
+      groups: [ 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]

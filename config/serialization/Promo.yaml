@@ -1,26 +1,26 @@
 App\Entity\Promo:
   attributes:
     id:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'teacher_affected_to_promo:read', 'get_students_in_grpe_promo:read' ]
     language:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
     title:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
     description:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
     location:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
     referenceAgate:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
     previonalEndDate:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read' , 'get_students_in_grpe_promo:read']
     fabrique:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
     groupes:
       groups: [ 'promo_read' ]
     formateurs:
       groups: [ 'promo_read' ]
     startedAt:
-      groups: [ 'promo_read' ]
-    previsionalEndDate:
-      groups: [ 'promo_read' ]
+      groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
+    referentiel:
+      groups: [  'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]

@@ -23,12 +23,18 @@ class Apprenant extends User
      */
     private $groupes;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isWaiting;
+
     public function __construct()
     {
         $this->groupes = new ArrayCollection();
         $this->setFirstname("APPRENANT");
         $this->setLastname("Apprenant");
         $this->setUsername("apprenant.apprenant");
+        $this->isWaiting = true;
     }
 
     public function getProfilSortie(): ?ProfilSortie
@@ -66,6 +72,18 @@ class Apprenant extends User
         if ($this->groupes->removeElement($groupe)) {
             $groupe->removeApprenant($this);
         }
+
+        return $this;
+    }
+
+    public function getIsWaiting(): ?bool
+    {
+        return $this->isWaiting;
+    }
+
+    public function setIsWaiting(bool $isWaiting): self
+    {
+        $this->isWaiting = $isWaiting;
 
         return $this;
     }

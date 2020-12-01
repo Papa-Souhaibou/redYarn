@@ -46,7 +46,6 @@ class CompetenceDataPersister implements ContextAwareDataPersisterInterface
         }
         foreach ($niveaux as $niveau)
         {
-            $data->removeNiveau($niveau);
             $niveau->setIsDeleted(true);
         }
         $this->manager->flush();

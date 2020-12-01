@@ -35,6 +35,7 @@ class ApprenantFixtures extends Fixture implements FixtureGroupInterface
                 ->setUsername($faker->userName)
                 ->setEmail($faker->email)
                 ->setProfil($profil)
+                ->setIsDeleted(false)
                 ->setPassword($this->encoder->encodePassword($apprenant,strtolower($profil->getLibelle())));
             $manager->persist($apprenant);
         }

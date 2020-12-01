@@ -12,3 +12,7 @@ App\Entity\Referentiel:
       - Length:
           min: 10
           minMessage: The min length is 10 characters
+    groupeCompetences:
+      - Count:
+          min: 1
+          minMessage: This ressource must be at least associated with one groupeCompetence
