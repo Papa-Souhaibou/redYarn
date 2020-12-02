@@ -12,8 +12,6 @@ App\Entity\Promo:
         resourceClass: App\Entity\Referentiel
         security: is_granted('ROLE_CM')
         security_message: You're unauthorized to access this resource.
-        normalization_context:
-          groups: [ 'referentiel_in_promo:read' ]
     groupes:
       subresource:
         resourceClass: App\Entity\Groupe
@@ -107,10 +105,20 @@ App\Entity\Promo:
       controller: App\Controller\PromoController::setTeacherInPromo
       requirements:
         id: \d+
+    set_referentiel_in_promo:
+      method: PUT
+      path: /promos/{id}/referentiel
+      requirements:
+        id: \d+
+      denormalization_context:
+        groups: [ 'referentiel_in_promo:write' ]
     set_grpe_status_in_promo:
       method: PUT
       path: /promos/{idPromo}/groupes/{idGrpe}
       controller: App\Controller\PromoController::setPromoGrpeStatus
+      deserialize: false
+      defaults:
+        _api_receive: false
       requirements:
         idPromo: \d+
         idGrpe: \d+

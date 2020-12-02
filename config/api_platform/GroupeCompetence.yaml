@@ -20,8 +20,8 @@ App\Entity\GroupeCompetence:
       path: /grpecompetences/{id}
       requirements:
         id: \d+
-      controller: App\Controller\GroupeCompetenceController::setGrpeCompetence
-      deserialize: false
+      denormalization_context:
+        groups: [ 'grpeCompetence:write' ]
     delete_grpecompetence:
       method: DELETE
       path: /grpecompetences/{id}
@@ -45,3 +45,5 @@ App\Entity\GroupeCompetence:
       path: /grpecompetences
       security: is_granted('ROLE_ADMIN')
       security_message: Only admin can create this ressource.
+      denormalization_context:
+        groups: [ 'grpeCompetence:write' ]

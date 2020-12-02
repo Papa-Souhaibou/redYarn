@@ -5,6 +5,7 @@ App\Entity\Profil:
     route_prefix: /admin
     security: is_granted('ROLE_ADMIN')
     security_message: Only admins have access to this resource.
+    filters: ['profil_boolean_filter']
   properties:
     users:
       subresource:

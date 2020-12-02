@@ -35,6 +35,8 @@ App\Entity\GroupeTag:
       path: /grpetags/{id}
       requirements:
         id: \d+
+      denormalization_context:
+        groups: [ 'grpetag:write' ]
     delete_grpetag:
       method: DELETE
       path: /grpetags/{id}

@@ -69,7 +69,7 @@ class ReferentielController extends AbstractController
         foreach ($groupes as $groupe)
         {
             preg_match($pattern,$groupe,$id);
-            $id = (int)$id;
+            $id = (int)$id[0];
             $action = substr(strstr($groupe,"?"),1);
             $groupe = $this->grpeCompetenceRepo->findOneById($id);
             if($groupe)
@@ -82,5 +82,6 @@ class ReferentielController extends AbstractController
                 }
             }
         }
+        return $referentiel;
     }
 }

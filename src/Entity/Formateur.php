@@ -23,10 +23,16 @@ class Formateur extends User
      */
     private $groupes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Brief::class, mappedBy="creator")
+     */
+    private $briefs;
+
     public function __construct()
     {
         $this->promo = new ArrayCollection();
         $this->groupes = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     /**
@@ -78,6 +84,36 @@ class Formateur extends User
     {
         if ($this->groupes->removeElement($groupe)) {
             $groupe->removeFormateur($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->setCreator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->removeElement($brief)) {
+            // set the owning side to null (unless already changed)
+            if ($brief->getCreator() === $this) {
+                $brief->setCreator(null);
+            }
         }
 
         return $this;

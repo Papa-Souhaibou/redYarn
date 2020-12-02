@@ -16,3 +16,5 @@ App\Entity\Groupe:
       groups: [ 'grpe_principal_in_promo:read' ]
     promo:
       groups: [ 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+    stattus:
+      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]

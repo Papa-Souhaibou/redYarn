@@ -13,6 +13,8 @@ App\Entity\Competence:
     add_competence:
       method: POST
       path: /competences
+      denormalization_context:
+        groups: [ 'competence:write' ]
   itemOperations:
     get_competence:
       method: GET
@@ -25,6 +27,8 @@ App\Entity\Competence:
       path: /competences/{id}
       requirements:
         id: \d+
+      denormalization_context:
+        groups: [ 'competence:write' ]
     delete_competence:
       method: DELETE
       path: /competences/{id}

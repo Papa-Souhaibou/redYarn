@@ -3,8 +3,8 @@ App\Entity\Niveau:
     id:
       groups: ['niveau:read','competence:read']
     libelle:
-      groups: [ 'competence:read', 'niveau:read' ]
+      groups: [ 'competence:read', 'niveau:read','competence:write' ]
     critereEvaluation:
-      groups: [ 'competence:read','niveau:read' ]
+      groups: [ 'competence:read','niveau:read','competence:write' ]
     groupeAction:
-      groups: [ 'competence:read','niveau:read' ]
+      groups: [ 'competence:read','niveau:read' ,'competence:write']

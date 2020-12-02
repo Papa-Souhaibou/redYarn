@@ -23,4 +23,4 @@ App\Entity\Promo:
     startedAt:
       groups: [ 'promo_read', 'get_students_in_grpe_promo:read' ]
     referentiel:
-      groups: [  'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'promo_read','referentiel_in_promo:read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]

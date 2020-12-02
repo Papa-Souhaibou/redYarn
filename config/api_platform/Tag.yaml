@@ -25,6 +25,8 @@ App\Entity\Tag:
       path: /tags/{id}
       requirements:
         id: \d+
+      denormalization_context:
+        groups: [ 'tag:write' ]
     delete_tag:
       method: DELETE
       path: /tags/{id}

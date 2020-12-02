@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Promo;
 use App\Repository\ApprenantRepository;
+use App\Repository\FormateurRepository;
 use App\Repository\GroupeRepository;
 use App\Repository\PromoRepository;
 use App\Service\EntityPromoInterface;
@@ -118,16 +119,41 @@ class PromoController extends AbstractController
         $content = $request->getContent();
         $contents = $this->serializer->decode($content,"json");
         $students = !empty($contents["apprenants"])?$contents["apprenants"]:[];
-        
+
     }
 
-    public function setTeacherInPromo()
+    public function setTeacherInPromo(Promo $promo,Request $request,FormateurRepository $formateurRepository)
     {
-        
+        $content = $request->getContent();
+        $contents = $this->serializer->decode($content,"json");
+        $teachers = !empty($contents["formateurs"])?$contents["formateurs"]:[];
+        foreach ($teachers as $teacher){
+            preg_match("#\d+#",$teacher,$id);
+            $id = (int)$id[0];
+            $action = substr(strchr($teacher,"?"),1);
+            $teacher = $formateurRepository->findOneById($id);
+            if ($teacher){
+                if ($action == "delete"){
+                    $teacher->removePromo($promo);
+                }elseif ($action == "add"){
+                    $promo->addFormateur($teacher);
+                    $teacher->addPromo($promo);
+                }
+            }
+        }
+        $this->manager->flush();
+        return $this->json($promo,Response::HTTP_OK);
     }
 
-    public function setPromoGrpeStatus()
+    public function setPromoGrpeStatus($idPromo,$idGrpe,Request $request)
     {
-
+        $content = $request->getContent();
+        $content = $this->serializer->decode($content,"json");
+        $status = isset($content["status"])?(int)$content["status"]:1;
+        $groupe = $this->groupeRepository->findStudentInPromoGrpe($idPromo,$idGrpe)[0];
+        $groupe->setStattus($status);
+        $this->manager->flush();
+        $groupe = $this->serializer->normalize($groupe,null,["groups" => [self::STUDENTS_IN_PROMO_GROUPE_NORMALISATION]]);
+        return $this->json($groupe,Response::HTTP_OK);
     }
 }
