@@ -3,16 +3,27 @@ App\Entity\Referentiel:
     libelle:
       - NotBlank:
           message: This field is required
+          groups: [ 'brief_validation' ]
       - Length:
           min: 10
           minMessage: The min length is 10 characters
     presentation:
       - NotBlank:
           message: This field is required
+          groups: [ 'brief_validation' ]
       - Length:
           min: 10
           minMessage: The min length is 10 characters
+    critereAdmission:
+      - NotBlank:
+          message: This field is required
+          groups: [ 'brief_validation' ]
+    critereEvaluation:
+      - NotBlank:
+          message: This field is required
+          groups: [ 'brief_validation' ]
     groupeCompetences:
       - Count:
           min: 1
           minMessage: This ressource must be at least associated with one groupeCompetence
+

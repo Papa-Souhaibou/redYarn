@@ -3,6 +3,7 @@ App\Entity\GroupeTag:
     libelle:
       - NotBlank:
           message: This field is required
+          groups: [ 'brief_validation' ]
     tags:
       - Count:
           min: 1

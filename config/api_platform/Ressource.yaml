@@ -1,0 +1,4 @@
+App\Entity\Ressource:
+  attributes:
+    route_prefix: /formateur
+

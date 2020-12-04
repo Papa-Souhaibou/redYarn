@@ -58,8 +58,22 @@ class ReferentielController extends AbstractController
         $value = $this->referentielService->createreferentiel($content,$programme,$this->grpeCompetenceRepo);
         if ($value instanceof Referentiel)
         {
-            $this->setGrpeCompetences($referentiel,$groupes);
-            dd($referentiel->getGroupeCompetences()->getValues());
+            $libelle = $value->getLibelle()?$value->getLibelle():$referentiel->getLibelle();
+            $presentation = $value->getPresentation() ? $value->getPresentation(): $referentiel->getPresentation();
+            $critereAdmission = $value->getCritereAdmission()?$value->getCritereAdmission():$referentiel->getCritereAdmission();
+            $critereEvaluation = $value->getCritereEvaluation()?$value->getCritereEvaluation():$referentiel->getCritereEvaluation();
+            $programme = $value->getProgramme()?$value->getProgramme():$referentiel->getProgramme();
+            $status = $value->getIsDeleted()?$value->getIsDeleted():$referentiel->getIsDeleted();
+            $referentiel = $this->setGrpeCompetences($referentiel,$groupes);
+            $referentiel->setPresentation($presentation)
+                    ->setProgramme($programme)
+                    ->setCritereAdmission($critereAdmission)
+                    ->setCritereEvaluation($critereEvaluation)
+                    ->setLibelle($libelle)
+                    ->setIsDeleted($status);
+            unset($value);
+            $this->manager->flush();
+            return $this->json($referentiel,Response::HTTP_OK);
         }
     }
 
@@ -74,10 +88,9 @@ class ReferentielController extends AbstractController
             $groupe = $this->grpeCompetenceRepo->findOneById($id);
             if($groupe)
             {
-                if ($action == "action=add"){
+                if ($action == "add"){
                     $referentiel->addGroupeCompetence($groupe);
-                    $groupe->removeReferentiel($referentiel);
-                }elseif ($action == "action=delete"){
+                }elseif ($action == "delete"){
                     $referentiel->removeGroupeCompetence($groupe);
                 }
             }

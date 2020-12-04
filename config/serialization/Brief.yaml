@@ -1,0 +1,36 @@
+App\Entity\Brief:
+  attributes:
+    id:
+      groups: ['brief:read']
+    language:
+      groups: ['brief:read','brief:write']
+    title:
+      groups: ['brief:read','brief:write']
+    description:
+      groups: ['brief:read','brief:write']
+    context:
+      groups: ['brief:read','brief:write']
+    modalitePedagogique:
+      groups: ['brief:read','brief:write']
+    critereDePerformance:
+      groups: ['brief:read','brief:write']
+    modaliteEvaluation:
+      groups: ['brief:read','brief:write']
+    avatar:
+      groups: ['brief:read','brief:write']
+    createdAt:
+      groups: ['brief:read','brief:write']
+    briefStatus:
+      groups: ['brief:read','brief:write']
+    livrableAttendus:
+      groups: ['brief:read','brief:write']
+    niveaux:
+      groups: ['brief:read','brief:write']
+    tags:
+      groups: ['brief:read','brief:write']
+    ressources:
+      groups: ['brief:read','brief:write']
+    referentiel:
+      groups: ['brief:read','brief:write']
+    isDeleted:
+      groups: ['brief:read','brief:write']

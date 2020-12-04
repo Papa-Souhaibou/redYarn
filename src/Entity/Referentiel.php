@@ -40,7 +40,7 @@ class Referentiel
     private $critereEvaluation;
 
     /**
-     * @ORM\ManyToMany(targetEntity=GroupeCompetence::class, mappedBy="referentiels")
+     * @ORM\ManyToMany(targetEntity=GroupeCompetence::class, mappedBy="referentiels",cascade={"persist"})
      */
     private $groupeCompetences;
 
@@ -59,11 +59,17 @@ class Referentiel
      */
     private $promos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Brief::class, mappedBy="referentiel")
+     */
+    private $briefs;
+
     public function __construct()
     {
         $this->groupeCompetences = new ArrayCollection();
         $this->isDeleted = false;
         $this->promos = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,7 +166,12 @@ class Referentiel
 
     public function getProgramme()
     {
-        return $this->programme;
+        if ($this->programme)
+        {
+            $stream = stream_get_contents($this->programme);
+            return base64_encode($stream);
+        }
+        return null;
     }
 
     public function setProgramme($programme): self
@@ -194,6 +205,36 @@ class Referentiel
             // set the owning side to null (unless already changed)
             if ($promo->getReferentiel() === $this) {
                 $promo->setReferentiel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->setReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->removeElement($brief)) {
+            // set the owning side to null (unless already changed)
+            if ($brief->getReferentiel() === $this) {
+                $brief->setReferentiel(null);
             }
         }
 

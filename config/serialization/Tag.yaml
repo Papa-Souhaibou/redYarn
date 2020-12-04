@@ -1,12 +1,12 @@
 App\Entity\Tag:
   attributes:
     id:
-      groups: [ 'grpetag:write', 'grpetag:read', 'tag:write', 'tag:read' ]
+      groups: [ 'grpetag:write', 'grpetag:read', 'tag:write', 'tag:read','brief:read','brief:write' ]
     libelle:
-      groups: [ 'grpetag:write', 'grpetag:read', 'tag:write', 'tag:read' ]
+      groups: [ 'grpetag:write', 'grpetag:read', 'tag:write', 'tag:read','brief:read','brief:write' ]
     descriptif:
-      groups: [ 'grpetag:write', 'grpetag:read', 'tag:write', 'tag:read' ]
+      groups: [ 'grpetag:write', 'grpetag:read', 'tag:write', 'tag:read','brief:read','brief:write' ]
     groupeTags:
-      groups: [ 'tag:write', 'tag:read' ]
+      groups: [ 'tag:write', 'tag:read','brief:write' ]
     isDeleted:
-      groups: [ 'tag:read', 'grpetag:read' ]
+      groups: [ 'tag:read', 'grpetag:read','brief:read' ]

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NiveauRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,11 @@ class Niveau
      * @ORM\Column(type="boolean")
      */
     private $isDeleted;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Brief::class, inversedBy="niveaux")
+     */
+    private $brief;
 
     public function __construct()
     {
@@ -116,4 +123,17 @@ class Niveau
 
         return $this;
     }
+
+    public function getBrief(): ?Brief
+    {
+        return $this->brief;
+    }
+
+    public function setBrief(?Brief $brief): self
+    {
+        $this->brief = $brief;
+
+        return $this;
+    }
+
 }

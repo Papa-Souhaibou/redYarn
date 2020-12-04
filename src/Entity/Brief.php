@@ -75,13 +75,43 @@ class Brief
     private $creator;
 
     /**
-     * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs")
+     * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs",cascade={"persist"})
      */
     private $livrableAttendus;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs",cascade={"persist"})
+     */
+    private $tags;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief",cascade={"persist"})
+     */
+    private $ressources;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs",cascade={"persist"})
+     */
+    private $referentiel;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief",cascade={"persist"})
+     */
+    private $niveaux;
 
     public function __construct()
     {
         $this->livrableAttendus = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+        $this->ressources = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->niveaux = new ArrayCollection();
+        $this->isDeleted = false;
     }
 
     public function getId(): ?int
@@ -175,7 +205,12 @@ class Brief
 
     public function getAvatar()
     {
-        return $this->avatar;
+        if ($this->avatar)
+        {
+            $stream = stream_get_contents($this->avatar);
+            return base64_encode($stream);
+        }
+        return null;
     }
 
     public function setAvatar($avatar): self
@@ -243,6 +278,114 @@ class Brief
     {
         if ($this->livrableAttendus->removeElement($livrableAttendu)) {
             $livrableAttendu->removeBrief($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ressource[]
+     */
+    public function getRessources(): Collection
+    {
+        return $this->ressources;
+    }
+
+    public function addRessource(Ressource $ressource): self
+    {
+        if (!$this->ressources->contains($ressource)) {
+            $this->ressources[] = $ressource;
+            $ressource->setBrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRessource(Ressource $ressource): self
+    {
+        if ($this->ressources->removeElement($ressource)) {
+            // set the owning side to null (unless already changed)
+            if ($ressource->getBrief() === $this) {
+                $ressource->setBrief(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getReferentiel(): ?Referentiel
+    {
+        return $this->referentiel;
+    }
+
+    public function setReferentiel(?Referentiel $referentiel): self
+    {
+        $this->referentiel = $referentiel;
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Niveau[]
+     */
+    public function getNiveaux(): Collection
+    {
+        return $this->niveaux;
+    }
+
+    public function addNiveau(Niveau $niveau): self
+    {
+        if (!$this->niveaux->contains($niveau)) {
+            $this->niveaux[] = $niveau;
+            $niveau->setBrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNiveau(Niveau $niveau): self
+    {
+        if ($this->niveaux->removeElement($niveau)) {
+            // set the owning side to null (unless already changed)
+            if ($niveau->getBrief() === $this) {
+                $niveau->setBrief(null);
+            }
         }
 
         return $this;

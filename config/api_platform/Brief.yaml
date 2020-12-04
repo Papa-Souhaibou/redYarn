@@ -1,0 +1,32 @@
+App\Entity\Brief:
+  attributes:
+    route_prefix: /formateur
+    normalization_context:
+      groups: ['brief:read']
+  collectionOperations:
+    get_briefs:
+      method: GET
+      path: /briefs
+    add_brief:
+      method: POST
+      path: /briefs
+      controller: App\Controller\BriefController::addBrief
+      deserialize: false
+      denormalization_context:
+        groups: [ 'brief:write']
+  itemOperations:
+    get_brief:
+      method: GET
+      path: /briefs/{id}
+      requirements:
+        id: \d+
+    set_brief:
+      method: PUT
+      path: /briefs/{id}
+      requirements:
+        id: \d+
+    delete_brief:
+      method: DELETE
+      path: /briefs/{id}
+      requirements:
+        id: \d+

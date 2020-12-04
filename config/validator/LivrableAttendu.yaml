@@ -1,0 +1,5 @@
+App\Entity\LivrableAttendu:
+  properties:
+    libelle:
+      - NotBlank:
+          groups: [ 'brief_validation' ]

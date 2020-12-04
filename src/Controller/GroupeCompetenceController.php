@@ -32,7 +32,7 @@ class GroupeCompetenceController extends AbstractController
         $status = Response::HTTP_BAD_REQUEST;
         if(!count($values))
         {
-            $values = $this->setCompetences($groupeCompetence,$competences,$competenceRepository);
+            $groupeCompetence = $this->setCompetences($groupeCompetence,$competences,$competenceRepository);
             $groupeCompetence->setLibelle($values->getLibelle())
                 ->setDescriptif($values->getDescriptif());
             $this->manager->flush();

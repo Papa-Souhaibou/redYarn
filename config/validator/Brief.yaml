@@ -1,0 +1,47 @@
+App\Entity\Brief:
+  properties:
+    language:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    title:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    description:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    context:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    modalitePedagogique:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    critereDePerformance:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    modaliteEvaluation:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    briefStatus:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    livrableAttendus:
+      - Count:
+          min: 1
+      - Valid:
+          groups: [ 'brief_validation' ]
+    niveaux:
+      - Count:
+          min: 1
+      - Valid:
+          groups: [ 'brief_validation' ]
+    referentiel:
+      - NotNull:
+          groups: [ 'brief_validation' ]
+      - Valid:
+          groups: [ 'brief_validation' ]
+    ressources:
+      - Valid:
+          groups: [ 'brief_validation' ]
+    tags:
+      - Valid:
+          groups: [ 'brief_validation' ]

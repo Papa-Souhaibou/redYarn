@@ -29,9 +29,15 @@ class LivrableAttendu
      */
     private $briefs;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
+
     public function __construct()
     {
         $this->briefs = new ArrayCollection();
+        $this->isDeleted = false;
     }
 
     public function getId(): ?int
@@ -71,6 +77,18 @@ class LivrableAttendu
     public function removeBrief(Brief $brief): self
     {
         $this->briefs->removeElement($brief);
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }

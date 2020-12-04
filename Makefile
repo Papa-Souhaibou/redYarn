@@ -16,5 +16,5 @@ fixture:
 	php bin/console make:fixture
 loadAll:
 	php bin/console doctrine:fixtures:load --append
-greetings:
-	echo ${message}
+voter:
+	php bin/console make:voter

@@ -1,0 +1,6 @@
+App\Entity\LivrableAttendu:
+  attributes:
+    id:
+      groups: ['brief:read','brief:write']
+    libelle:
+      groups: ['brief:read','brief:write']

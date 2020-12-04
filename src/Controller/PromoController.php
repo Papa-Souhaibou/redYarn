@@ -6,7 +6,6 @@ use App\Entity\Promo;
 use App\Repository\ApprenantRepository;
 use App\Repository\FormateurRepository;
 use App\Repository\GroupeRepository;
-use App\Repository\PromoRepository;
 use App\Service\EntityPromoInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -119,7 +118,7 @@ class PromoController extends AbstractController
         $content = $request->getContent();
         $contents = $this->serializer->decode($content,"json");
         $students = !empty($contents["apprenants"])?$contents["apprenants"]:[];
-
+        dd($students);
     }
 
     public function setTeacherInPromo(Promo $promo,Request $request,FormateurRepository $formateurRepository)

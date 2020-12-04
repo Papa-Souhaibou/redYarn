@@ -1,9 +1,9 @@
 App\Entity\GroupeTag:
   attributes:
     id:
-      groups: [ 'tag:write', 'grpetag:read', 'tag:read' ]
+      groups: [ 'tag:write', 'grpetag:read', 'tag:read','brief:write' ]
     libelle:
-      groups: [ 'tag:write', 'grpetag:write', 'grpetag:read', 'tag:read' ]
+      groups: [ 'tag:write', 'grpetag:write', 'grpetag:read', 'tag:read','brief:write' ]
     tags:
       groups: [ 'grpetag:write', 'grpetag:read' ]
     isDeleted:

@@ -1,0 +1,26 @@
+App\Entity\LivrableAttendu:
+  attributes:
+    route_prefix: /formateur
+  collectionOperations:
+    get_livrableattendus:
+      method: GET
+      path: /livrableattendus
+    add_livrableattendu:
+      method: POST
+      path: /livrableattendus
+  itemOperations:
+    get_livrableattendu:
+      method: GET
+      path: /livrableattendus/{id}
+      requirements:
+        id: \d+
+    set_livrableattendu:
+      method: PUT
+      path: /livrableattendus/{id}
+      requirements:
+        id: \d+
+    delete_livrableattendu:
+      method: DELETE
+      path: /livrableattendus/{id}
+      requirements:
+        id: \d+

@@ -3,18 +3,21 @@ App\Entity\Niveau:
     libelle:
       - NotBlank:
           message: This field is required
+          groups: [ 'brief_validation' ]
       - Length:
           min: 10
           minMessage: The min length is 10 characters
     critereEvaluation:
       - NotBlank:
           message: This field is required
+          groups: [ 'brief_validation' ]
       - Length:
           min: 10
           minMessage: The min length is 10 characters
     groupeAction:
       - NotBlank:
           message: This field is required
+          groups: [ 'brief_validation' ]
       - Length:
           min: 10
           minMessage: The min length is 10 characters

@@ -5,7 +5,10 @@ App\Entity\Tag:
     libelle:
       - NotBlank:
           message: This field is required
+          groups: [ 'brief_validation' ]
     groupeTags:
       - Count:
           min: 1
           minMessage: This tag must be at least in {{ limit }} groupeTag
+      - Valid:
+          groups: [ 'brief_validation' ]

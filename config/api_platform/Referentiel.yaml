@@ -40,11 +40,10 @@ App\Entity\Referentiel:
     set_referentiel:
       method: PUT
       path: /referentiels/{id}
-      denormalize_context:
-        groups: [ 'referentiel:write' ]
       requirements:
         id: \d+
-
+      controller: App\Controller\ReferentielController::setReferentiel
+      deserialize: false
     delete_referentiel:
       method: DELETE
       path: /referentiels/{id}

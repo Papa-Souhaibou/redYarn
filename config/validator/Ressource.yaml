@@ -1,0 +1,7 @@
+App\Entity\Ressource:
+  properties:
+    title:
+      - NotBlank:
+          groups: [ 'brief_validation' ]
+    brief:
+      - NotNull:

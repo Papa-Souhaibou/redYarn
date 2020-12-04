@@ -35,7 +35,7 @@ class GroupeCompetence
     private $competences;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Referentiel::class, inversedBy="groupeCompetences")
+     * @ORM\ManyToMany(targetEntity=Referentiel::class, inversedBy="groupeCompetences",cascade={"persist"})
      */
     private $referentiels;
 

@@ -1,0 +1,10 @@
+App\Entity\Ressource:
+  attributes:
+    id:
+      groups: ['brief:read','brief:write']
+    title:
+      groups: ['brief:read','brief:write']
+    url:
+      groups: ['brief:read','brief:write']
+    pieceJointe:
+      groups: ['brief:read','brief:write']

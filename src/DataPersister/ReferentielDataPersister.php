@@ -25,9 +25,10 @@ class ReferentielDataPersister implements ContextAwareDataPersisterInterface
     public function persist($data, array $context = [])
     {
         if (isset($context["collection_operation_name"]))
+        {
             $this->manager->persist($data);
+        }
         $this->manager->flush();
-        return $data;
     }
 
     public function remove($data, array $context = [])
