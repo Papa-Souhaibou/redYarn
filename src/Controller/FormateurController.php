@@ -25,7 +25,9 @@ class FormateurController extends AbstractController
         {
             $manager->persist($result);
             $manager->flush();
-            fclose($createUser->getAvatarResource());
+            $avatarResource = $createUser->getAvatarResource();
+            if ($avatarResource)
+                fclose($avatarResource);
             $status = Response::HTTP_CREATED;
         }
         return $this->json($result,$status);

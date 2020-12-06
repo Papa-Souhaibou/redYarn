@@ -40,7 +40,9 @@ class UserController extends AbstractController
                 {
                     $this->manager->persist($result);
                     $this->manager->flush();
-                    fclose($this->createUser->getAvatarResource());
+                    $avatarResource = $this->createUser->getAvatarResource();
+                    if ($avatarResource)
+                        fclose($avatarResource);
                     $status = Response::HTTP_CREATED;
                 }
                 return $this->json($result,$status);

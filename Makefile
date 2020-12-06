@@ -18,3 +18,7 @@ loadAll:
 	php bin/console doctrine:fixtures:load --append
 voter:
 	php bin/console make:voter
+route:
+	php bin/console debug:route
+router:
+	php bin/console debug:router

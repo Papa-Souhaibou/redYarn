@@ -54,10 +54,19 @@ class EntityReferentielInterface
         $match = "#\d+#";
         foreach ($grpeCompetences as $grpeCompetence)
         {
-            $id = (int)$grpeCompetence;
+            preg_match($match,$grpeCompetence,$id);
+            $id = (int)$id[0];
+            $action = substr(strchr($grpeCompetence,"?"),1);
             $groupe = $grpeCompetenceRepo->findOneById($id);
             if ($groupe)
-                $referentiel->addGroupeCompetence($groupe);
+            {
+                if ($action == "add"){
+                    $referentiel->addGroupeCompetence($groupe);
+                }elseif ($action == "delete")
+                {
+                    $referentiel->removeGroupeCompetence($groupe);
+                }
+            }
         }
         return $referentiel;
     }

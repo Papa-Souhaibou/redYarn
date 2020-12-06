@@ -1,32 +1,71 @@
 App\Entity\Brief:
   attributes:
-    route_prefix: /formateur
     normalization_context:
       groups: ['brief:read']
   collectionOperations:
     get_briefs:
       method: GET
-      path: /briefs
+      path: /formateur/briefs
     add_brief:
       method: POST
-      path: /briefs
+      path: /formateur/briefs
       controller: App\Controller\BriefController::addBrief
       deserialize: false
       denormalization_context:
         groups: [ 'brief:write']
+      security_post_denormalize: is_granted('ROLE_FORMATEUR')
+    duplicate_brief:
+      method: POST
+      path: /formateur/briefs/{id}
+      controller: App\Controller\BriefController::duplicateBrief
+      deserialize: false
+      requirements:
+        id: \d+
+    get_brief_in_promo:
+      method: GET
+      path: /formateur/promos/{id}/briefs
+      controller: App\Controller\BriefController::getBriefsInPromo
+      requirements:
+        id: \d+
+    get_briefs_formateur:
+      method: GET
+      path: /formateur/{id}/briefs/valide
+      requirements:
+        id: \d+
+      controller: App\Controller\BriefController::getTeacherValidBriefs
+      defaults:
+        _api_receive: false
   itemOperations:
     get_brief:
       method: GET
-      path: /briefs/{id}
+      path: /formateur/briefs/{id}
       requirements:
         id: \d+
     set_brief:
       method: PUT
-      path: /briefs/{id}
+      path: /formateur/briefs/{id}
       requirements:
         id: \d+
     delete_brief:
       method: DELETE
-      path: /briefs/{id}
+      path: /formateur/briefs/{id}
       requirements:
         id: \d+
+    get_brief_in_promo_group:
+      method: GET
+      route_prefix: /formateur
+      path: /formateur/promos/{idPromo}/groupes/{idGrpe}/briefs
+      requirements:
+        idPromo: \d+
+        idGrpe: \d+
+      normalization_context:
+        groups: [ 'brief_in_group:read' ]
+      controller: App\Controller\PromoController::getBriefInGrpePromo
+      defaults:
+        _api_receive: false
+    get_brief_in_a_promo:
+      method: GET
+      path: /formateur/promos/{idPromo}/briefs/{idBrief}
+      controller: App\Controller\BriefController::getBriefInAPromo
+      defaults:
+        _api_receive: false

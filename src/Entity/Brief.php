@@ -104,6 +104,16 @@ class Brief
      */
     private $niveaux;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="brief",cascade={"persist"})
+     */
+    private $promoBriefs;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
+     */
+    private $groupes;
+
     public function __construct()
     {
         $this->livrableAttendus = new ArrayCollection();
@@ -112,6 +122,8 @@ class Brief
         $this->createdAt = new \DateTime();
         $this->niveaux = new ArrayCollection();
         $this->isDeleted = false;
+        $this->promoBriefs = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -387,6 +399,60 @@ class Brief
                 $niveau->setBrief(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PromoBrief[]
+     */
+    public function getPromoBriefs(): Collection
+    {
+        return $this->promoBriefs;
+    }
+
+    public function addPromoBrief(PromoBrief $promoBrief): self
+    {
+        if (!$this->promoBriefs->contains($promoBrief)) {
+            $this->promoBriefs[] = $promoBrief;
+            $promoBrief->setBrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromoBrief(PromoBrief $promoBrief): self
+    {
+        if ($this->promoBriefs->removeElement($promoBrief)) {
+            // set the owning side to null (unless already changed)
+            if ($promoBrief->getBrief() === $this) {
+                $promoBrief->setBrief(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        $this->groupes->removeElement($groupe);
 
         return $this;
     }

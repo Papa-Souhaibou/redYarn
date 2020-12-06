@@ -1,18 +1,18 @@
 App\Entity\User:
   attributes:
     id:
-      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'users_with_this_profil','add_grp:write','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     firstname:
-      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'users_with_this_profil','add_grp:write','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     lastname:
-      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'users_with_this_profil','add_grp:write','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ,'brief_in_group:read']
     email:
-      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'users_with_this_profil','add_grp:write','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ,'brief_in_group:read']
     username:
-      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'users_with_this_profil','add_grp:write','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     isDeleted:
-      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read' ]
+      groups: [ 'users_with_this_profil','add_grp:write','user_read','promo_read', 'grpe_principal_in_promo:read','brief_in_group:read' ]
     avatar:
-      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'users_with_this_profil','user_read','promo_read', 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     isWaiting:
-      groups: [ 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'waiting_student:read','add_grp:write', 'get_students_in_grpe_promo:read' ]

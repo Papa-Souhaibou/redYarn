@@ -8,13 +8,16 @@ use Doctrine\Persistence\ObjectManager;
 
 class ProfilFixtures extends Fixture
 {
-    public const PROFIL_REFERENCE = "user_profil";
     public function load(ObjectManager $manager)
     {
-        $profil = new Profil();
-        $profil->setLibelle("FORMATEUR");
-        $manager->persist($profil);
+        $profils = ["ADMIN","APPRENANT","FORMATEUR","CM"];
+        foreach ($profils as $role)
+        {
+            $profil = new Profil();
+            $profil->setLibelle("$role");
+            $manager->persist($profil);
+            $this->addReference($role,$profil);
+        }
         $manager->flush();
-        $this->addReference(self::PROFIL_REFERENCE,$profil);
     }
 }

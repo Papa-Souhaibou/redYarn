@@ -1,9 +1,9 @@
 App\Entity\Competence:
   attributes:
     id:
-      groups: [ 'competence:read','grpecompetence_read','referentiel_in_promo:read','grpeCompetence:write' ]
+      groups: [ 'competence:read','grpecompetence_read','referentiel_in_promo:read','grpeCompetence:write','brief_in_group:read' ]
     libelle:
-      groups: [ 'competence:read','grpecompetence_read','referentiel_in_promo:read','grpeCompetence:write','competence:write' ]
+      groups: [ 'competence:read','grpecompetence_read','referentiel_in_promo:read','grpeCompetence:write','competence:write','brief_in_group:read' ]
     groupecompetences:
       groups: [ 'competence:read','competence:write' ]
     niveaux:

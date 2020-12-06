@@ -1,36 +1,38 @@
 App\Entity\Brief:
   attributes:
     id:
-      groups: ['brief:read']
+      groups: ['brief:read','brief_in_group:read']
     language:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     title:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     description:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     context:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     modalitePedagogique:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     critereDePerformance:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     modaliteEvaluation:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     avatar:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     createdAt:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     briefStatus:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     livrableAttendus:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     niveaux:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     tags:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     ressources:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     referentiel:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
     isDeleted:
-      groups: ['brief:read','brief:write']
+      groups: ['brief:read','brief:write','brief_in_group:read']
+    creator:
+      groups: ['brief_in_group:read']

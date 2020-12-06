@@ -19,6 +19,7 @@ class PromoController extends AbstractController
     private const GROUPE_NORMALISATION = "grpe_principal_in_promo:read";
     private const WAITING_STUDENT_NORMALISATION = "waiting_student:read";
     private const STUDENTS_IN_PROMO_GROUPE_NORMALISATION = 'get_students_in_grpe_promo:read';
+    private const BRIEF_IN_GROUP_NORMALIZATION = 'brief_in_group:read';
     private $manager;
     private $avatarName = "avatar";
     private $entityPromo;
@@ -45,7 +46,11 @@ class PromoController extends AbstractController
             $this->manager->persist($result);
             $this->manager->flush();
             $status = Response::HTTP_CREATED;
-            fclose($this->entityPromo->getRessource());
+        }
+        $resource = $this->entityPromo->getRessource();
+        if ($resource)
+        {
+            fclose();
         }
         return $this->json($result,$status);
     }
@@ -154,5 +159,15 @@ class PromoController extends AbstractController
         $this->manager->flush();
         $groupe = $this->serializer->normalize($groupe,null,["groups" => [self::STUDENTS_IN_PROMO_GROUPE_NORMALISATION]]);
         return $this->json($groupe,Response::HTTP_OK);
+    }
+
+    public function getBriefInGrpePromo($idPromo,$idGrpe)
+    {
+        $groupe = $this->groupeRepository->findStudentInPromoGrpe((int)$idPromo,(int)$idGrpe);
+        if ($groupe){
+            $groupe = $this->serializer->normalize($groupe,null,["groups"=>[self::BRIEF_IN_GROUP_NORMALIZATION]]);
+            return $this->json($groupe,Response::HTTP_OK);
+        }
+
     }
 }

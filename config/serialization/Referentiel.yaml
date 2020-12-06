@@ -1,18 +1,18 @@
 App\Entity\Referentiel:
   attributes:
     id:
-      groups: ['referentiel_read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
+      groups: ['referentiel_read','brief_in_group:read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
     libelle:
-      groups: ['referentiel_read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
+      groups: ['referentiel_read','brief_in_group:read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
     presentation:
-      groups: ['referentiel_read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
+      groups: ['referentiel_read','brief_in_group:read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
     critereAdmission:
-      groups: ['referentiel_read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
+      groups: ['referentiel_read','brief_in_group:read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
     critereEvaluation:
-      groups: ['referentiel_read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
+      groups: ['referentiel_read','brief_in_group:read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read','brief:write']
     groupeCompetences:
       groups: ['referentiel_read','referentiel_in_promo:read']
     programme:
-      groups: [ 'referentiel_read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read' ]
+      groups: [ 'referentiel_read','brief_in_group:read', 'grpe_principal_in_promo:read', 'referentiel_in_promo:read', 'waiting_student:read','promo_read', 'get_students_in_grpe_promo:read','brief:read' ]
     isDeleted:
-      groups: [ 'brief:write' ]
+      groups: [ 'brief:write','brief_in_group:read' ]

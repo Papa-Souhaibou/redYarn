@@ -11,25 +11,22 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class FormateurFixtures extends Fixture implements FixtureGroupInterface
+class FormateurFixtures extends Fixture implements FixtureGroupInterface,DependentFixtureInterface
 {
     private $encoder;
-    private $profilRepository;
-    public function __construct(UserPasswordEncoderInterface $encoder,ProfilRepository $profilRepository)
+    public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
-        $this->profilRepository = $profilRepository;
     }
 
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create();
+        $profil = $this->getReference("FORMATEUR");
         $times = 10;
-        $profil = $this->profilRepository->findOneBy(["libelle" => "FORMATEUR"]);
         for ($i = 0; $i < $times; $i++)
         {
             $apprenant = new Formateur();
-            #$profil = $this->getReference(ProfilFixtures::PROFIL_REFERENCE);
             $apprenant->setFirstname($faker->firstName)
                 ->setLastname($faker->lastName)
                 ->setUsername($faker->userName)
@@ -41,17 +38,17 @@ class FormateurFixtures extends Fixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    /*public function getDependencies()
-    {
-        return array(
-            ProfilFixtures::class
-        );
-    }*/
-
     public static function getGroups(): array
     {
         return array(
             "formateur"
+        );
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            ProfilFixtures::class,
         );
     }
 }

@@ -44,8 +44,11 @@ class ReferentielController extends AbstractController
         {
             $this->manager->persist($value);
             $this->manager->flush();
-            fclose($this->referentielService->getProgrammeRessource());
             $status = Response::HTTP_CREATED;
+        }
+        $programmeResource = $this->referentielService->getProgrammeRessource();
+        if ($programmeResource){
+            fclose($programmeResource);
         }
         return $this->json($value,$status);
     }

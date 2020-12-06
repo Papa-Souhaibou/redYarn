@@ -3,6 +3,10 @@ App\Entity\Formateur:
     normalization_context:
       groups: [ 'user_read' ]
     security: is_granted('ROLE_FORMATEUR')
+  properties:
+    briefs:
+      subresource:
+        resourceClass: App\Entity\Brief
   collectionOperations:
     get_formateurs:
       method: GET

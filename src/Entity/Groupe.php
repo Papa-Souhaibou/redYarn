@@ -59,6 +59,11 @@ class Groupe
      */
     private $apprenants;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Brief::class, mappedBy="groupes")
+     */
+    private $briefs;
+
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
@@ -66,6 +71,7 @@ class Groupe
         $this->createdAt = new \DateTime();
         $this->isDeleted = false;
         $this->stattus = true;
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -190,6 +196,51 @@ class Groupe
     {
         $this->apprenants->removeElement($apprenant);
 
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->addGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->removeElement($brief)) {
+            $brief->removeGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAllBriefs()
+    {
+        foreach ($this->briefs as $brief)
+        {
+            $this->removeBrief($brief);
+        }
+        return $brief;
+    }
+
+    public function removeAllApprenant()
+    {
+        foreach ($this->apprenants as $apprenant)
+        {
+            $this->removeApprenant($apprenant);
+        }
         return $this;
     }
 }

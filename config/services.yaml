@@ -34,3 +34,7 @@ services:
         parent: 'api_platform.doctrine.orm.boolean_filter'
         arguments: [{'isDeleted':~}]
         tags: [{name: 'api_platform.filter',id: 'profil_boolean_filter'}]
+    briefs_status_search_filter:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments: [{'briefStatus':~}]
+        tags: [{name: 'api_platform.filter',id: 'briefs_status_search_filter'}]

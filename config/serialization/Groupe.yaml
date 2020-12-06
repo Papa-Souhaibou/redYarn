@@ -1,20 +1,22 @@
 App\Entity\Groupe:
   attributes:
     id:
-      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     name:
-      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'groupe_read','add_grp:write','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     createdAt:
-      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'groupe_read','add_grp:write','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     status:
-      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'groupe_read','add_grp:write','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     type:
-      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'groupe_read','add_grp:write','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     apprenants:
-      groups: [ 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'grpe_principal_in_promo:read','add_grp:write', 'waiting_student:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
     formateurs:
-      groups: [ 'grpe_principal_in_promo:read' ]
+      groups: [ 'grpe_principal_in_promo:read','add_grp:write' ]
     promo:
       groups: [ 'grpe_principal_in_promo:read', 'waiting_student:read', 'get_students_in_grpe_promo:read' ]
     stattus:
-      groups: [ 'groupe_read','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read' ]
+      groups: [ 'groupe_read','add_grp:write','promo_read', 'grpe_principal_in_promo:read', 'get_students_in_grpe_promo:read','brief_in_group:read' ]
+    briefs:
+      groups: [ 'brief_in_group:read' ]

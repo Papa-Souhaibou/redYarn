@@ -36,6 +36,42 @@ class BriefRepository extends ServiceEntityRepository
     }
     */
 
+    public function fetchBriefsInPromo(int $id)
+    {
+        return $this->createQueryBuilder('b')
+            ->innerJoin('b.promoBriefs',"p")
+            ->innerJoin("p.promo",'pp')
+            ->andWhere('pp.id=:id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function fetchTeacherBriefs(int $id,string $status)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.briefStatus=:status')
+            ->setParameter('status',$status)
+            ->innerJoin('b.creator','c')
+            ->andWhere('c.id=:id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findBriefInAPromo($brief,$promo)
+    {
+        return $this->createQueryBuilder('b')
+            ->innerJoin('b.promoBriefs','pb')
+            ->andWhere('pb.brief=:brief')
+            ->setParameter('brief',$brief)
+            ->andWhere('pb.promo=:promo')
+            ->setParameter('promo',$promo)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+    }
+
     /*
     public function findOneBySomeField($value): ?Brief
     {

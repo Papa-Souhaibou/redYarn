@@ -1,10 +1,12 @@
 App\Entity\Niveau:
   attributes:
     id:
-      groups: ['niveau:read','competence:read','brief:read','brief:write']
+      groups: ['niveau:read','competence:read','brief:read','brief:write','brief_in_group:read']
     libelle:
-      groups: [ 'competence:read', 'niveau:read','competence:write','brief:read','brief:write' ]
+      groups: [ 'competence:read', 'niveau:read','competence:write','brief:read','brief:write','brief_in_group:read' ]
     critereEvaluation:
-      groups: [ 'competence:read','niveau:read','competence:write','brief:read','brief:write' ]
+      groups: [ 'competence:read','niveau:read','competence:write','brief:read','brief:write','brief_in_group:read' ]
     groupeAction:
-      groups: [ 'competence:read','niveau:read' ,'competence:write','brief:read','brief:write']
+      groups: [ 'competence:read','niveau:read' ,'competence:write','brief:read','brief:write','brief_in_group:read']
+    competence:
+      groups: [ 'brief_in_group:read' ]

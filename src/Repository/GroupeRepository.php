@@ -80,7 +80,7 @@ class GroupeRepository extends ServiceEntityRepository
                 ->andWhere('p.id=:idPromo')
                 ->setParameter('idPromo',$idPromo)
                 ->getQuery()
-                ->getResult();
+                ->getOneOrNullResult();
     }
 
     public function fetchGroupesInPromo($idPromo)
